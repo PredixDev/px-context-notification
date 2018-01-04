@@ -1,0 +1,32 @@
+sudo: false
+dist: trusty
+language: node_js
+node_js:
+- stable
+branches:
+  except:
+  - gh-pages
+addons:
+  firefox: latest
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+before_script:
+- yarn add polymer-cli
+- polymer install --variants
+script:
+- xvfb-run wct --skip-plugin sauce
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then wct --plugin sauce --skip-plugin
+  local; fi
+after_success:
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then openssl aes-256-cbc -k "$DEPLOYSECRET"
+  -in deploy.enc -out deploy_key -d; fi
+- cd $TRAVIS_BUILD_DIR/scripts
+- chmod 755 ghp.sh
+- "./ghp.sh"
+env:
+  global:
+  - secure: UA7ImpMQymvhm35UMibA2fzzsC3hm+T9CiCkn4JkklR08EFHfISdd0bsMWo0LbCdk7TwqNYZlyhYdYcOIclCZwiDiezSgSxBnmYhs480odBYzZVrVSEVF46SZVvXrlZ3c0X3b5G9uBWvtEYz1fMPBBZkzY8zrnwpcUE+2hE9fDb6Hsl0bPQeXkDUI1dudnL972DboXOORCPfg8X3bApQQ2mGJ8LUpFnHIgI9P+Gji2+6IWmiy9b15hboNAxYNrPtfKBhblSw5hpN15lOfKte77BiZDWqiXFY3BZOQf6PVPFOrZFpDaIpbsBISOjkZKCuvhYBcm2oqQRR17tlyKpuoN9LeJvvxZUIN6udz5zwDlSYLsEYXO6ydWBLi2n2G5mtAJnqk91B/51LctuLxgUdB74KXFagx7VUqsHPUfnkQxj6Q3JGeeEd9AYemFH2WwrmRT0AIsUy8WBH9e591KbbRZ54vM+RyyRfqcsggoN4rPGaWsyaB3eTBSoRCmSRlGagUnFzKkGZBNEry2NHcSo7WPmC6CnUsGz3qXxfvLaUtF1HpO6wBdZt4FXozj7TzNqmuLOdinuWWa2Iy8lxyD7UUGWXDxGBfAp8x7vkKRsIiSPwDihw3G/5h3RR6BRUnoX9YfpQ1YI3ADnvgDjlCH5RqXcUAt7zaF7CknWajGloH5o=
+  - secure: HO7XyOVaOgYM0VtmSVzFwQZ7lHTE7objf719lh1xBjVVBrnGnGu7CUpvO1GG4n1nmfEQ8qT/bn+e+Twz+ESgLnHqoD8FtISMhBpvo62sJWP4mv6CIJDAg5Zfoi4bXOyrURyxAc7UIOEQ5Yt8BRcjvXskIC5mUSLW+FWqJkTzmL+177BgHqzuCNhOx+TgSCqhWdp96AKOeLs/VHd6w3rLmBKoXpEL1H6AIok/o4EQxpWlkdOdjlaAKYmwqe/04j0XY/CuWbgO8+djp0/5u5cAewxMHprXdtmt5utvYU16V4Tgpujy1gKA0QYNgkisHciDw2fwZdSU3ukyHu/nE0IdIUZWknZiHGv+G1JaDn2H/ymjrRfx3u2Hcj+PVhWM9km+UzOnPjiYqGGK/kIGzaLmyVopI7xbpNNReC73fqM9Gftk+D7gfFQCWpvRrzZUrSgb4QqnN4k0YT0KoXUIE8ePPpcbV9tB0N2mPjWI9IuE61oDwIYkauqyMqftZ7RRwnH3OkzsfMKAK1G2mbdmeI+VVTT8nPsupAPwKiS46Y9S3qb2UuAUei3vbeqPrQkkQI3XDsYTmst9RTDYK8+OpqjeMMdhWoyxLqcFjcRCu/XkCG8D7kCrZasGa2+cUJoYQPmy4Q0vIOUUmM6gApObP5kycaaLquvb9y31l+Pz07W3zSw=

@@ -1,0 +1,50 @@
+<link defer rel="import" href="../polymer/polymer.html" />
+
+<link async rel="import" href="px-ge-svg-logo.html">
+<link defer rel="import" href="predix-logo.html">
+<link defer rel="import" href="css/px-contextual-notification-styles.html">
+
+<!--
+### Usage
+
+<px-contextual-notification></<px-contextual-notification>
+
+### Styling
+The following custom properties are available for styling:
+
+Custom property | Description
+----------------|-------------
+
+@element px-contextual-notification
+@blurb A component providing a way to notify the user of a state change or actions taken on a specific context.
+@homepage index.html
+@demo index.html
+-->
+
+<dom-module id="px-contextual-notification">
+  <template>
+    <style include="px-contextual-notification-styles"></style>
+
+    <div class="u-ml flex flex--middle">
+      <div class="u-ml-- flex flex--middle">
+        <slot name="logo">
+          <px-ge-svg-logo class="flex flex--middle"></px-ge-svg-logo>
+        </slot>
+      </div>
+      <div class="u-ml-- flex flex--middle">
+        <slot name="title">
+          <label>{{applicationTitle}}</label>
+        </slot>
+      </div>
+    </div>
+
+    <div class="flex flex--middle">
+      <slot name="attribution">
+        <span class="u-mr-- px-contextual-notification__powered-by-text">Powered by</span>
+        <predix-logo class="u-mr"></predix-logo>
+      </slot>
+    </div>
+
+  </template>
+</dom-module>
+<script src="dist/px-contextual-notification.js"></script>
