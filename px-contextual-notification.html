@@ -26,13 +26,13 @@ Custom property | Description
     <style include="px-contextual-notification-styles"></style>
 
     <div class$="contextual-notification {{type}} {{size}}">
-      <div id="icon" class="icon">
+      <div class="icon">
         <slot name="icon"></slot>
       </div>
-      <div id="content" class="content">
+      <div class="content">
         <slot name="content"></slot>
       </div>
-      <div id="action" class="action">
+      <div class="action">
         <slot name="action" class="contextual-notification__action"></slot>
       <div>
     </div>

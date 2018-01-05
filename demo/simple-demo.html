@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contextual Notification</title>
+  <title>Contextual Notification -- Simple Demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../../polymer/polymer.html"/>
-
+  <link rel="import" href="../../px-theme/px-theme-styles.html">
   <link rel="import" href="../px-contextual-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
-  <link rel="import" href="../../px-theme/px-theme-styles.html">
-  <custom-style>
-    <style include="px-theme-styles" is="custom-style"></style>
-  </custom-style>
-
-</head>
-
-<body>
   <style>
     px-chip {
       --px-chip-border-color: white;
@@ -29,14 +21,22 @@
     .chips {
       display: flex;
     }
-    .chips > *+* {
-      padding-left: 10px;
+    px-chip {
+      padding-right: 10px;
+      padding-top: 2px;
+      padding-bottom: 2px;
     }
   </style>
+
+</head>
+
+<body>
+  <custom-style>
+    <style include="px-theme-styles" is="custom-style"></style>
+  </custom-style>
+
   <h2>A static contextual notification</h2>
-  <px-contextual-notification
-    type="info"
-    size="regular">
+  <px-contextual-notification type="info" size="regular">
     <px-icon slot="icon" icon="px-utl:filter"></px-icon>
     <div slot="content">26 Filters 2,479,322 Devices</div>
   </px-contextual-notification>
@@ -50,7 +50,7 @@
   <br>
   <px-contextual-notification type="important" size="regular">
     <px-icon slot="icon" icon="px-utl:delete"></px-icon>
-    <div slot="content">Widget has been removed from your dashboard</div>
+    <div slot="content">Widget has been removed from your dashboard.</div>
     <button slot="action" class="whiteButton">Undo</button>
   </px-contextual-notification>
 
@@ -67,6 +67,43 @@
   <h2>An small contextual notification with no icons</h2>
   <px-contextual-notification type="info" size="small">
     <div slot="content">26 Filters</div>
+  </px-contextual-notification>
+
+  <h2>A contextual notification with overflowing content</h2>
+  <px-contextual-notification type="healthy" size="auto">
+    <px-icon slot="icon" icon="px-utl:confirmed"></px-icon>
+    <div slot="content">Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?</div>
+    <px-icon slot="action" icon="px-nav:close"></px-icon>
+  </px-contextual-notification>
+  <br>
+  <px-contextual-notification type="info" size="auto">
+    <div slot="content" class="chips">
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+      <px-chip content="Status" show-icon not-selectable></px-chip>
+    </div>
+    <button slot="action">Clear All</button>
   </px-contextual-notification>
 
 </body>

@@ -32,15 +32,30 @@
 }
 
 .regular {
+  font-size: calculateRem(16px);
   height: calculateRem(40px);
   display: flex;
   align-items: center;
 }
 
 .small {
+  font-size: calculateRem(12px);
   height: calculateRem(20px);
   display: flex;
   align-items: center;
+}
+
+.auto {
+  font-size: calculateRem(16px);
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.content ::slotted(div) {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .icon ::slotted(px-icon) {
