@@ -26,9 +26,6 @@
 // Component
 
 .contextual-notification {
-  position: relative;
-  display: flex;
-  align-items: center;
   padding-left: calculateRem(15px);
   padding-right: calculateRem(15px);
   width: inherit;
@@ -46,35 +43,54 @@
   align-items: center;
 }
 
-.icon {
+.icon ::slotted(px-icon) {
   flex: 0 0 auto;
+  width: calculateRem(16px);
+  height: calculateRem(16px);
+  --iron-icon-width: 100%;
+  --iron-icon-height: 100%;
   padding-right: calculateRem(5px);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
 }
 
 .content {
   flex: 1 1 auto;
+  display: flex;
+  align-items: center;
 }
 
 .action {
+  display: flex;
+  align-items: center;
+}
+
+.action ::slotted(px-icon){
   flex: 0 0 auto;
+  width: calculateRem(16px);
+  height: calculateRem(16px);
+  --iron-icon-width: 100%;
+  --iron-icon-height: 100%;
   padding-left: calculateRem(15px);
 }
 
-// .contextual-notification__icon {
-//   flex: 0 0 auto;
-//   width: calculateRem(16px);
-//   height: calculateRem(16px);
-//   --iron-icon-width: 100%;
-//   --iron-icon-height: 100%;
-// }
-//
-// .contextual-notification__action {
-//   width: calculateRem(16px);
-//   height: calculateRem(16px);
-//   --iron-icon-width: 100%;
-//   --iron-icon-height: 100%;
-//   cursor: pointer;
-// }
+::slotted(button) {
+  border: 1px solid white;
+  box-shadow: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+::slotted(px-chip){
+  --px-chip-border-color: white;
+  --px-chip-text-color: white;
+  --px-chip-icon-color: white;
+}
 
 .important {
   background-color: var(--px-alert-label-background-color--important, red);

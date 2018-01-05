@@ -21,15 +21,6 @@
 
 <body>
   <style>
-    .whiteButton {
-      border-color: white;
-      border: 1px solid default;
-      box-shadow: none;
-      background-color: transparent;
-      color: white;
-      cursor: pointer;
-      outline: none;
-    }
     px-chip {
       --px-chip-border-color: white;
       --px-chip-text-color: white;
@@ -53,10 +44,10 @@
   <h2>A confirmation contextual notification with actions</h2>
   <px-contextual-notification type="healthy" size="regular">
     <px-icon slot="icon" icon="px-utl:confirmed"></px-icon>
-    <div slot="content">Your dashboard has been successfully created but lets write a bit more to make sure the padding is working correctly.</div>
+    <div slot="content">Your dashboard has been successfully created.</div>
     <px-icon slot="action" icon="px-nav:close"></px-icon>
   </px-contextual-notification>
-
+  <br>
   <px-contextual-notification type="important" size="regular">
     <px-icon slot="icon" icon="px-utl:delete"></px-icon>
     <div slot="content">Widget has been removed from your dashboard</div>
@@ -70,7 +61,7 @@
       <px-chip content="Location" show-icon not-selectable></px-chip>
       <px-chip content="Date" show-icon not-selectable></px-chip>
     </div>
-    <button slot="action" class="whiteButton">Clear All</button>
+    <button slot="action">Clear All</button>
   </px-contextual-notification>
 
   <h2>An small contextual notification with no icons</h2>
