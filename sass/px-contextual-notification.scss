@@ -101,10 +101,11 @@
   outline: none;
 }
 
-::slotted(px-chip){
-  --px-chip-border-color: white;
-  --px-chip-text-color: white;
-  --px-chip-icon-color: white;
+::slotted(button:hover){
+  background-color: rgba(255,255,255,0.2);
+}
+::slotted(button:active){
+  background-color: rgba(255,255,255,0.4);
 }
 
 .important {
