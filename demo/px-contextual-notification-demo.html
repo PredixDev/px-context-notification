@@ -23,93 +23,97 @@
 
     <!-- Header -->
     <px-demo-header
-        module-name="px-contextual-notification"
-        description="A component providing a way to notify the user of a state change or actions taken on a specific context."
-        desktop tablet>
-    </px-demo-header>
+    module-name="px-contextual-notification"
+    description="A component providing a way to notify the user of a state change or actions taken on a specific context."
+    desktop tablet>
+  </px-demo-header>
 
-    <!-- Interactive -->
-    <px-demo-interactive>
-      <!-- Configs -->
-      <px-demo-configs slot="px-demo-configs" configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
+  <!-- Interactive -->
+  <px-demo-interactive>
+    <!-- Configs -->
+    <px-demo-configs slot="px-demo-configs" configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
 
-      <!-- Props -->
-      <px-demo-props slot="px-demo-props" props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
+    <!-- Props -->
+    <px-demo-props slot="px-demo-props" props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
 
-      <!-- Component ---------------------------------------------------------->
-      <px-demo-component slot="px-demo-component" style="width: 100%;">
-        <px-contextual-notification application-title="[[props.applicationTitle.value]]">
-          <template is="dom-if" if="{{isCustomContent(chosenConfig.configName)}}" restamp="true">
-            <span slot="title">Hello Predix</span>
-            <px-icon slot="logo" icon="px-utl:alert"></px-icon>
-          </template>
-        </px-contextual-notification>
+    <!-- Component ---------------------------------------------------------->
+    <px-demo-component slot="px-demo-component" style="width: 100%;">
+      <px-contextual-notification
+        content="{{props.content.value}}"
+        type="{{props.type.value}}"
+        icon="{{props.icon.value}}">
+      </px-contextual-notification>
 
-      </px-demo-component>
-      <!-- END Component ------------------------------------------------------>
+  </px-demo-component>
+  <!-- END Component ------------------------------------------------------>
 
-      <px-demo-component-snippet
-        slot="px-demo-component-snippet"
-        element-properties="{{props}}"
-        element-name="px-contextual-notification">
-      </px-demo-component-snippet>
-    </px-demo-interactive>
+  <px-demo-component-snippet
+  slot="px-demo-component-snippet"
+  element-properties="{{props}}"
+  element-name="px-contextual-notification">
+</px-demo-component-snippet>
+</px-demo-interactive>
 
-    <!-- API Viewer -->
-    <px-demo-api-viewer source="px-contextual-notification"></px-demo-api-viewer>
+<!-- API Viewer -->
+<px-demo-api-viewer source="px-contextual-notification"></px-demo-api-viewer>
 
-    <!-- Footer -->
-    <px-demo-footer></px-demo-footer>
+<!-- Footer -->
+<px-demo-footer></px-demo-footer>
 
-  </template>
+</template>
 
 </dom-module>
 <script>
-  Polymer({
-    is: 'px-contextual-notification-demo',
+Polymer({
+  is: 'px-contextual-notification-demo',
 
-    properties: {
+  properties: {
 
-      props: {
-        type: Object,
-        value: function(){ return this.demoProps; }
-      },
-
-      configs: {
-        type: Array,
-        value: function(){
-          return [
-            { configName: 'Default',
-              applicationTitle: 'Predix Design System',
-              configReset: true },
-            {
-              configName: 'Custom Header',
-              applicationTitle: 'n/a - see demo snippet',
-              lightDomContent: '<span slot="title">Hello Predix</span><px-icon slot="logo" icon="px-utl:alert"></px-icon>'
-            }
-          ]
-        }
-      }
+    props: {
+      type: Object,
+      value: function(){ return this.demoProps; }
     },
 
-    /**
-     * A reference for `this.props`. Read the documentation there.
-     */
-    demoProps: {
-      applicationTitle: {
-       type: String,
-       value: 'Predix Design System',
-       inputType: 'text',
-       inputPlaceholder: ''
-     },
-     lightDomContent: {
-       type: String,
-       defaultValue: ''
+    configs: {
+      type: Array,
+      value: function(){
+        return [
+          { configName: 'Default',
+          configReset: true }
+        ]
+      }
+    }
+  },
 
-     }
-   },
-   isCustomContent: function(selectedTab) {
-     return selectedTab === 'Custom Header';
-   },
-  });
+  /**
+  * A reference for `this.props`. Read the documentation there.
+  */
+  demoProps: {
+    content: {
+      type: String,
+      value: 'Your dashboard has been successfully created',
+      inputType: 'text'
+    },
+    type: {
+      type: String,
+      value: 'important',
+      inputType: 'dropdown',
+      inputChoices: ['important', 'warning', 'error', 'information', 'unknown', 'healthy']
+    },
+    icon: {
+      type: String,
+      value: 'px-utl:confirmed',
+      inputType: 'text'
+    },
+    action: {
+      type: String,
+      value: 'px-nav:close',
+      inputType: 'text'
+    },
+    lightDomContent: {
+      type: String,
+      defaultValue: ''
+    }
+  }
+});
 </script>

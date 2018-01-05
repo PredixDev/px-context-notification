@@ -6,15 +6,35 @@
     properties:{
 
       /**
-       * The application title to display in the lefthand corner of the branding bar.
-       * Defaults to the `document.title` attribute if not specified.
+       * [Optional] The icon to display to the left of the content in the
+       * contextual notification
        * @type {String}
        */
-      applicationTitle:{
-        type: String,
-        value: function() {
-          return document.title;
-        }
+      icon: {
+        type: String
+      },
+      /**
+       * The content to display in the contextual notification
+       * @type {String}
+       */
+      content: {
+        type: String
+      },
+      /**
+       * [Optional] The icon or button to display on the right side of the
+       * contextual notification
+       * @type {String}
+       */
+      action: {
+        type: String
+      },
+      /**
+       * The status of the contextual notification, e.g. warning, info. This will
+       * be reflected as the background color of the notification.
+       * @type {String}
+       */
+      type: {
+        type: String
       }
     }
   });

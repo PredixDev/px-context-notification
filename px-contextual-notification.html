@@ -25,24 +25,12 @@ Custom property | Description
   <template>
     <style include="px-contextual-notification-styles"></style>
 
-    <div class="u-ml flex flex--middle">
-      <div class="u-ml-- flex flex--middle">
-        <slot name="logo">
-          <px-ge-svg-logo class="flex flex--middle"></px-ge-svg-logo>
-        </slot>
+    <div class$="contextual-notification {{type}}">
+      <px-icon class="contextual-notification__icon" icon="{{icon}}"></px-icon>
+      <div class="contextual-notification__content regular">
+        {{content}}
       </div>
-      <div class="u-ml-- flex flex--middle">
-        <slot name="title">
-          <label>{{applicationTitle}}</label>
-        </slot>
-      </div>
-    </div>
-
-    <div class="flex flex--middle">
-      <slot name="attribution">
-        <span class="u-mr-- px-contextual-notification__powered-by-text">Powered by</span>
-        <predix-logo class="u-mr"></predix-logo>
-      </slot>
+      <px-icon class="contextual-notification__action" icon="{{action}}"></px-icon>
     </div>
 
   </template>

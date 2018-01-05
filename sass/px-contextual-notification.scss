@@ -25,5 +25,67 @@
 
 // Component
 
+.contextual-notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: calculateRem(15px);
+  padding-right: calculateRem(15px);
+  height: calculateRem(30px);
+  width: inherit;
+}
+
+.contextual-notification__content {
+  flex: 1 1 auto;
+  padding-left: calculateRem(5px);
+}
+
+.contextual-notification__icon {
+  flex: 0 0 auto;
+  width: calculateRem(16px);
+  height: calculateRem(16px);
+  --iron-icon-width: 100%;
+  --iron-icon-height: 100%;
+}
+
+.contextual-notification__action {
+  flex: 0 0 auto;
+  width: calculateRem(16px);
+  height: calculateRem(16px);
+  --iron-icon-width: 100%;
+  --iron-icon-height: 100%;
+  cursor: pointer;
+}
+
+.important {
+  background-color: var(--px-alert-label-background-color--important, red);
+  color: var(--px-alert-label-text-color--important, white);
+}
+
+.warning {
+  background-color: var(--px-alert-label-background-color--warning, orange);
+  color: var(--px-alert-label-text-color--warning, white);
+}
+
+.error {
+  background-color: var(--px-alert-label-background-color--error, yellow);
+  color: var(--px-alert-label-text-color--error, black);
+}
+
+.info, .information {
+  background-color: var(--px-alert-label-background-color--information, blue);
+  color: var(--px-alert-label-text-color--information, white);
+}
+
+.healthy {
+  background-color: var(--px-alert-label-background-color--healthy, green);
+  color: var(--px-alert-label-text-color--healthy, white);
+}
+
+.unknown {
+  background-color: var(--px-alert-label-background-color--unknown, gray);
+  color: var(--px-alert-label-text-color--unknown, white);
+}
+
 // Trumps
 @import "px-spacing-design/_trumps.spacing.scss";
