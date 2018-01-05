@@ -13,5 +13,10 @@
        * The status of the contextual notification, e.g. warning, info. This will
        * be reflected as the background color of the notification.
        * @type {String}
-       */type:{type:String}}})})();
+       */type:{type:String},/**
+       * The size of the contextual notification, e.g. regular or small. This
+       * will be reflected as the height of the notification and should be
+       * based on the size of the content in the notification.
+       * @type {String}
+       */size:{type:String}}})})();
 //# sourceMappingURL=px-contextual-notification.js.map

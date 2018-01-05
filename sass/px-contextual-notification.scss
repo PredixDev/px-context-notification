@@ -31,13 +31,25 @@
   align-items: center;
   padding-left: calculateRem(15px);
   padding-right: calculateRem(15px);
-  height: calculateRem(30px);
   width: inherit;
+}
+
+.regular {
+  height: calculateRem(40px);
+  display: flex;
+  align-items: center;
+}
+
+.small {
+  height: calculateRem(20px);
+  display: flex;
+  align-items: center;
 }
 
 .contextual-notification__content {
   flex: 1 1 auto;
   padding-left: calculateRem(5px);
+  padding-right: calculateRem(15px);
 }
 
 .contextual-notification__icon {
