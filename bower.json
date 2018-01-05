@@ -26,7 +26,8 @@
   ],
   "dependencies": {
     "polymer": "#1.9 - 2",
-    "px-theme": "^3.0.0"
+    "px-theme": "^3.0.0",
+    "px-chip": "^1.1.0"
   },
   "devDependencies": {
     "px-normalize-design": "^v1.0.0",
@@ -35,9 +36,8 @@
     "px-flexbox-design": "^1.0.0",
     "px-headings-design": "^1.0.0",
     "px-spacing-design": "^1.0.0",
-    "px-demo": "^2.0.0",
-    "px-icon-set": "^v2.0.0",
     "px-demo": "^3.0.0",
+    "px-icon-set": "^2.0.0",
     "web-component-tester": "^6.0.0"
   },
   "resolutions": {

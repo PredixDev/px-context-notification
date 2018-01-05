@@ -10,6 +10,7 @@
 
   <link rel="import" href="../px-contextual-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
+  <link rel="import" href="../../px-chip/px-chip.html"/>
 
   <link rel="import" href="../../px-theme/px-theme-styles.html">
   <custom-style>
@@ -19,38 +20,63 @@
 </head>
 
 <body>
-
+  <style>
+    .whiteButton {
+      border-color: white;
+      border: 1px solid default;
+      box-shadow: none;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      outline: none;
+    }
+    px-chip {
+      --px-chip-border-color: white;
+      --px-chip-text-color: white;
+      --px-chip-icon-color: white;
+    }
+    .chips {
+      display: flex;
+    }
+    .chips > *+* {
+      padding-left: 10px;
+    }
+  </style>
   <h2>A static contextual notification</h2>
   <px-contextual-notification
-    content="26 Filters 2,479,322 Devices"
     type="info"
-    size="regular"
-    icon="px-utl:filter">
+    size="regular">
+    <px-icon slot="icon" icon="px-utl:filter"></px-icon>
+    <div slot="content">26 Filters 2,479,322 Devices</div>
   </px-contextual-notification>
 
   <h2>A confirmation contextual notification with actions</h2>
-  <px-contextual-notification
-    content="Your dashboard has been successfully created but lets write a bit more to make sure the padding is working correctly."
-    type="healthy"
-    size="regular"
-    icon="px-utl:confirmed"
-    action="px-nav:close">
+  <px-contextual-notification type="healthy" size="regular">
+    <px-icon slot="icon" icon="px-utl:confirmed"></px-icon>
+    <div slot="content">Your dashboard has been successfully created but lets write a bit more to make sure the padding is working correctly.</div>
+    <px-icon slot="action" icon="px-nav:close"></px-icon>
+  </px-contextual-notification>
+
+  <px-contextual-notification type="important" size="regular">
+    <px-icon slot="icon" icon="px-utl:delete"></px-icon>
+    <div slot="content">Widget has been removed from your dashboard</div>
+    <button slot="action" class="whiteButton">Undo</button>
   </px-contextual-notification>
 
   <h2>An informational contextual notification with actions</h2>
-  <px-contextual-notification
-    content="Widget has been removed from your dashboard"
-    type="important"
-    size="regular"
-    icon="px-utl:delete">
+  <px-contextual-notification type="info" size="regular">
+    <div slot="content" class="chips">
+      <px-chip content="Name" show-icon not-selectable></px-chip>
+      <px-chip content="Location" show-icon not-selectable></px-chip>
+      <px-chip content="Date" show-icon not-selectable></px-chip>
+    </div>
+    <button slot="action" class="whiteButton">Clear All</button>
   </px-contextual-notification>
 
-    <h2>An small contextual notification with no icons</h2>
-    <px-contextual-notification
-      content="26 Filters"
-      type="info"
-      size="small">
-    </px-contextual-notification>
+  <h2>An small contextual notification with no icons</h2>
+  <px-contextual-notification type="info" size="small">
+    <div slot="content">26 Filters</div>
+  </px-contextual-notification>
 
 </body>
 </html>
