@@ -38,10 +38,10 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification
-        content="{{props.content.value}}"
-        type="{{props.type.value}}"
-        icon="{{props.icon.value}}">
+      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}">
+        <px-icon slot="icon" icon="{{props.icon.value}}"></px-icon>
+        <div slot="content">{{props.content.value}}</div>
+        <px-icon slot="action" icon="{{props.action.value}}"></px-icon>
       </px-contextual-notification>
 
   </px-demo-component>
@@ -96,9 +96,15 @@ Polymer({
     },
     type: {
       type: String,
-      value: 'important',
+      value: 'healthy',
       inputType: 'dropdown',
       inputChoices: ['important', 'warning', 'error', 'information', 'unknown', 'healthy']
+    },
+    size: {
+      type: String,
+      value: 'regular',
+      inputType: 'dropdown',
+      inputChoices: ['regular', 'small', 'auto']
     },
     icon: {
       type: String,
