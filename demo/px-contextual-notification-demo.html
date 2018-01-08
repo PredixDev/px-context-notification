@@ -13,6 +13,7 @@
 <!-- Imports for this component -->
 <link rel="import" href="../../px-demo/css/px-demo-styles.html" />
 <link rel="import" href="../px-contextual-notification.html" />
+<link rel="import" href="../../px-chip/px-chip.html"/>
 
 <!-- Demo DOM module -->
 <dom-module id="px-contextual-notification-demo">
@@ -20,6 +21,25 @@
     <custom-style>
       <style include="px-demo-styles" is="custom-style"></style>
     </custom-style>
+
+    <style>
+      px-chip {
+        --px-chip-border-color: white;
+        --px-chip-border-color--hover: white;
+        --px-chip-text-color: white;
+        --px-chip-icon-color: white;
+        --px-chip-icon-color--hover: white;
+        --px-chip-background-color--hover: rgba(255,255,255,0.2);
+      }
+      .chips {
+        display: flex;
+      }
+      px-chip {
+        padding-right: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+      }
+    </style>
 
     <!-- Header -->
     <px-demo-header
@@ -42,6 +62,19 @@
         <px-icon slot="icon" icon="{{props.icon.value}}"></px-icon>
         <div slot="content">{{props.content.value}}</div>
         <px-icon slot="action" icon="{{props.action.value}}"></px-icon>
+        <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
+          <px-icon slot="icon" icon="px-utl:delete"></px-icon>
+          <div slot="content">Widget has been removed from your dashboard.</div>
+          <button slot="action" class="whiteButton">Undo</button>
+        </template>
+        <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
+          <div slot="content" class="chips">
+            <px-chip content="Name" show-icon not-selectable></px-chip>
+            <px-chip content="Location" show-icon not-selectable></px-chip>
+            <px-chip content="Date" show-icon not-selectable></px-chip>
+          </div>
+          <button slot="action">Clear All</button>
+        </template>
       </px-contextual-notification>
 
   </px-demo-component>
@@ -78,8 +111,28 @@ Polymer({
       type: Array,
       value: function(){
         return [
-          { configName: 'Default',
-          configReset: true }
+          {
+            configName: 'Default',
+            configReset: true
+          },
+          {
+            configName: 'Confirmation',
+            type: 'important',
+            size: 'regular',
+            content: '',
+            icon: '',
+            action: '',
+            lightDomContent: '<px-icon slot="icon" icon="px-utl:delete"></px-icon><div slot="content">Widget has been removed from your dashboard.</div><button slot="action" class="whiteButton">Undo</button>'
+          },
+          {
+            configName: 'Informational',
+            type: 'info',
+            size: 'regular',
+            content: '',
+            icon: '',
+            action: '',
+            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="action">Clear All</button>'
+          }
         ]
       }
     }
@@ -89,16 +142,11 @@ Polymer({
   * A reference for `this.props`. Read the documentation there.
   */
   demoProps: {
-    content: {
-      type: String,
-      value: 'Your dashboard has been successfully created',
-      inputType: 'text'
-    },
     type: {
       type: String,
       value: 'healthy',
       inputType: 'dropdown',
-      inputChoices: ['important', 'warning', 'error', 'information', 'unknown', 'healthy']
+      inputChoices: ['important', 'warning', 'error', 'info', 'unknown', 'healthy']
     },
     size: {
       type: String,
@@ -108,18 +156,23 @@ Polymer({
     },
     icon: {
       type: String,
-      value: 'px-utl:confirmed',
-      inputType: 'text'
+      value: 'px-utl:filter'
+    },
+    content: {
+      type: String,
+      value: '26 Filters'
     },
     action: {
       type: String,
-      value: 'px-nav:close',
-      inputType: 'text'
+      value: 'px-nav:close'
     },
     lightDomContent: {
       type: String,
-      defaultValue: ''
+      defaultValue: '<px-icon slot="icon" icon="px-utl:filter"></px-icon><div slot="content">26 Filters 2,479,322 Devices</div>'
     }
+  },
+  showCustomContent: function(selectedTab, contentToShow) {
+    return selectedTab === contentToShow;
   }
 });
 </script>
