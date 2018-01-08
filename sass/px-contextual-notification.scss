@@ -45,6 +45,7 @@
   padding-left: calculateRem(15px);
   padding-right: calculateRem(15px);
   width: inherit;
+  box-sizing: content-box;
 }
 
 .regular {
