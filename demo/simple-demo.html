@@ -39,26 +39,36 @@
   </custom-style>
 
   <h2>A static contextual notification</h2>
-  <px-contextual-notification type="info" size="regular">
-    <px-icon slot="icon" icon="px-utl:filter"></px-icon>
-    <div slot="content">26 Filters 2,479,322 Devices</div>
+  <px-contextual-notification
+    type="info"
+    size="regular"
+    icon="px-utl:filter"
+    content="26 Filters 2,479,322 Devices">
+    <div slot="action"></div>
   </px-contextual-notification>
 
   <h2>A confirmation contextual notification with actions</h2>
-  <px-contextual-notification type="healthy" size="regular">
-    <px-icon slot="icon" icon="px-utl:confirmed"></px-icon>
-    <div slot="content">Your dashboard has been successfully created.</div>
-    <px-icon slot="action" icon="px-nav:close"></px-icon>
+  <px-contextual-notification
+    type="healthy"
+    size="regular"
+    icon="px-utl:confirmed"
+    content="Your dashboard has been successfully created."
+    action="px-nav:close">
   </px-contextual-notification>
   <br>
-  <px-contextual-notification type="important" size="regular">
-    <px-icon slot="icon" icon="px-utl:delete"></px-icon>
-    <div slot="content">Widget has been removed from your dashboard.</div>
+  <px-contextual-notification
+    type="important"
+    size="regular"
+    icon="px-utl:delete"
+    content="Widget has been removed from your dashboard.">
     <button slot="action" class="whiteButton">Undo</button>
   </px-contextual-notification>
 
   <h2>An informational contextual notification with actions</h2>
-  <px-contextual-notification type="info" size="regular">
+  <px-contextual-notification
+    type="info"
+    size="regular">
+    <div slot="icon"></div>
     <div slot="content" class="chips">
       <px-chip content="Name" show-icon not-selectable></px-chip>
       <px-chip content="Location" show-icon not-selectable></px-chip>
@@ -67,19 +77,28 @@
     <button slot="action">Clear All</button>
   </px-contextual-notification>
 
-  <h2>An small contextual notification with no icons</h2>
-  <px-contextual-notification type="info" size="small">
-    <div slot="content">26 Filters</div>
+  <h2>A small contextual notification with no icons</h2>
+  <px-contextual-notification
+    type="info"
+    size="small"
+    content="26 Filters">
+    <div slot="icon"></div>
+    <div slot="action"></div>
   </px-contextual-notification>
 
   <h2>A contextual notification with overflowing content</h2>
-  <px-contextual-notification type="healthy" size="auto">
-    <px-icon slot="icon" icon="px-utl:confirmed"></px-icon>
-    <div slot="content">Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?</div>
-    <px-icon slot="action" icon="px-nav:close"></px-icon>
+  <px-contextual-notification
+    type="healthy"
+    size="auto"
+    icon="px-utl:confirmed"
+    content="Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?"
+    action="px-nav:close">
   </px-contextual-notification>
   <br>
-  <px-contextual-notification type="info" size="auto">
+  <px-contextual-notification
+    type="info"
+    size="auto">
+    <div slot="icon"></div>
     <div slot="content" class="chips">
       <px-chip content="Name" show-icon not-selectable></px-chip>
       <px-chip content="Location" show-icon not-selectable></px-chip>

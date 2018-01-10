@@ -73,43 +73,43 @@
   padding-bottom: 10px;
 }
 
-.content ::slotted(div) {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.icon ::slotted(px-icon) {
-  flex: 0 0 auto;
-  width: calculateRem(16px);
-  height: calculateRem(16px);
-  --iron-icon-width: 100%;
-  --iron-icon-height: 100%;
-  padding-right: calculateRem(5px);
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-}
-
 .content {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
 }
 
-.action {
+.content ::slotted(div) {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
 }
 
-.action ::slotted(px-icon){
+.icon {
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding-right: calculateRem(5px);
+}
+
+.icon ::slotted(px-icon) {
   width: calculateRem(16px);
   height: calculateRem(16px);
   --iron-icon-width: 100%;
   --iron-icon-height: 100%;
+}
+
+.action {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
   padding-left: calculateRem(15px);
+}
+
+.action ::slotted(px-icon){
+  width: calculateRem(16px);
+  height: calculateRem(16px);
+  --iron-icon-width: 100%;
+  --iron-icon-height: 100%;
 }
 
 ::slotted(button) {

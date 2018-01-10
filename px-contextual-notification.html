@@ -27,13 +27,19 @@ Custom property | Description
 
     <div class$="contextual-notification {{type}} {{size}}">
       <div class="icon">
-        <slot name="icon"></slot>
+        <slot name="icon">
+          <px-icon icon="{{icon}}"></px-icon>
+        </slot>
       </div>
       <div class="content">
-        <slot name="content"></slot>
+        <slot name="content">
+          <div>{{content}}</div>
+        </slot>
       </div>
       <div class="action">
-        <slot name="action" class="contextual-notification__action"></slot>
+        <slot name="action">
+          <px-icon icon={{action}}></px-icon>
+        </slot>
       <div>
     </div>
 
