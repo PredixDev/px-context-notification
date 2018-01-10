@@ -58,16 +58,12 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}">
-        <px-icon slot="icon" icon="{{props.icon.value}}"></px-icon>
-        <div slot="content">{{props.content.value}}</div>
-        <px-icon slot="action" icon="{{props.action.value}}"></px-icon>
+      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}" icon="{{props.icon.value}}" content="{{props.content.value}}" action="{{props.action.value}}">
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
-          <px-icon slot="icon" icon="px-utl:delete"></px-icon>
-          <div slot="content">Widget has been removed from your dashboard.</div>
           <button slot="action" class="whiteButton">Undo</button>
         </template>
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
+          <div slot="icon"></div>
           <div slot="content" class="chips">
             <px-chip content="Name" show-icon not-selectable></px-chip>
             <px-chip content="Location" show-icon not-selectable></px-chip>
@@ -112,15 +108,15 @@ Polymer({
       value: function(){
         return [
           {
-            configName: 'Default',
+            configName: 'Status',
             configReset: true
           },
           {
             configName: 'Confirmation',
             type: 'important',
             size: 'regular',
-            content: '',
-            icon: '',
+            content: 'Widget has been removed from your dashboard.',
+            icon: 'px-utl:delete',
             action: '',
             lightDomContent: '<px-icon slot="icon" icon="px-utl:delete"></px-icon><div slot="content">Widget has been removed from your dashboard.</div><button slot="action" class="whiteButton">Undo</button>'
           },
@@ -144,27 +140,27 @@ Polymer({
   demoProps: {
     type: {
       type: String,
-      value: 'healthy',
+      defaultValue: 'healthy',
       inputType: 'dropdown',
       inputChoices: ['important', 'warning', 'error', 'info', 'unknown', 'healthy']
     },
     size: {
       type: String,
-      value: 'regular',
+      defaultValue: 'regular',
       inputType: 'dropdown',
       inputChoices: ['regular', 'small', 'auto']
     },
     icon: {
       type: String,
-      value: 'px-utl:filter'
+      defaultValue: 'px-utl:filter'
     },
     content: {
       type: String,
-      value: '26 Filters'
+      defaultValue: '26 Filters'
     },
     action: {
       type: String,
-      value: 'px-nav:close'
+      defaultValue: 'px-nav:close'
     },
     lightDomContent: {
       type: String,
