@@ -118,7 +118,7 @@ Polymer({
             content: 'Widget has been removed from your dashboard.',
             statusIcon: 'px-utl:delete',
             actionIcon: '',
-            lightDomContent: '<px-icon slot="left" icon="px-utl:delete"></px-icon><div slot="content">Widget has been removed from your dashboard.</div><button slot="right" class="whiteButton">Undo</button>'
+            lightDomContent: '<button slot="right" class="whiteButton">Undo</button>'
           },
           {
             configName: 'Informational',
@@ -127,7 +127,7 @@ Polymer({
             content: '',
             statusIcon: '',
             actionIcon: '',
-            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
+            lightDomContent: '<div slot="left"></div><div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
           }
         ]
       }
@@ -164,7 +164,7 @@ Polymer({
     },
     lightDomContent: {
       type: String,
-      defaultValue: '<px-icon slot="left" icon="px-utl:filter"></px-icon><div slot="content">26 Filters 2,479,322 Devices</div>'
+      defaultValue: ''
     }
   },
   showCustomContent: function(selectedTab, contentToShow) {
