@@ -10,7 +10,7 @@
        * contextual notification
        * @type {String}
        */
-      icon: {
+      statusIcon: {
         type: String
       },
       /**
@@ -25,7 +25,7 @@
        * contextual notification
        * @type {String}
        */
-      action: {
+      actionIcon: {
         type: String
       },
       /**

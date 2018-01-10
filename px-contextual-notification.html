@@ -26,9 +26,9 @@ Custom property | Description
     <style include="px-contextual-notification-styles"></style>
 
     <div class$="contextual-notification {{type}} {{size}}">
-      <div class="icon">
-        <slot name="icon">
-          <px-icon icon="{{icon}}"></px-icon>
+      <div class="left">
+        <slot name="left">
+          <px-icon class="icon" icon="{{statusIcon}}"></px-icon>
         </slot>
       </div>
       <div class="content">
@@ -36,9 +36,9 @@ Custom property | Description
           <div>{{content}}</div>
         </slot>
       </div>
-      <div class="action">
-        <slot name="action">
-          <px-icon icon={{action}}></px-icon>
+      <div class="right">
+        <slot name="right">
+          <px-icon class="icon" icon={{actionIcon}}></px-icon>
         </slot>
       <div>
     </div>

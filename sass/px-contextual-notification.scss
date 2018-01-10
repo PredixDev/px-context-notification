@@ -84,28 +84,21 @@
   flex-wrap: wrap;
 }
 
-.icon {
+.left {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   padding-right: calculateRem(5px);
 }
 
-.icon ::slotted(px-icon) {
-  width: calculateRem(16px);
-  height: calculateRem(16px);
-  --iron-icon-width: 100%;
-  --iron-icon-height: 100%;
-}
-
-.action {
+.right {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   padding-left: calculateRem(15px);
 }
 
-.action ::slotted(px-icon){
+.icon {
   width: calculateRem(16px);
   height: calculateRem(16px);
   --iron-icon-width: 100%;
@@ -124,6 +117,7 @@
 ::slotted(button:hover){
   background-color: rgba(255,255,255,0.2);
 }
+
 ::slotted(button:active){
   background-color: rgba(255,255,255,0.4);
 }

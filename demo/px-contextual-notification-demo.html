@@ -58,18 +58,18 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}" icon="{{props.icon.value}}" content="{{props.content.value}}" action="{{props.action.value}}">
+      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon"{{props.actionIcon.value}}">
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
-          <button slot="action" class="whiteButton">Undo</button>
+          <button slot="right" class="whiteButton">Undo</button>
         </template>
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
-          <div slot="icon"></div>
+          <div slot="left"></div>
           <div slot="content" class="chips">
             <px-chip content="Name" show-icon not-selectable></px-chip>
             <px-chip content="Location" show-icon not-selectable></px-chip>
             <px-chip content="Date" show-icon not-selectable></px-chip>
           </div>
-          <button slot="action">Clear All</button>
+          <button slot="right">Clear All</button>
         </template>
       </px-contextual-notification>
 
@@ -116,18 +116,18 @@ Polymer({
             type: 'important',
             size: 'regular',
             content: 'Widget has been removed from your dashboard.',
-            icon: 'px-utl:delete',
-            action: '',
-            lightDomContent: '<px-icon slot="icon" icon="px-utl:delete"></px-icon><div slot="content">Widget has been removed from your dashboard.</div><button slot="action" class="whiteButton">Undo</button>'
+            statusIcon: 'px-utl:delete',
+            actionIcon: '',
+            lightDomContent: '<px-icon slot="left" icon="px-utl:delete"></px-icon><div slot="content">Widget has been removed from your dashboard.</div><button slot="right" class="whiteButton">Undo</button>'
           },
           {
             configName: 'Informational',
             type: 'info',
             size: 'regular',
             content: '',
-            icon: '',
-            action: '',
-            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="action">Clear All</button>'
+            statusIcon: '',
+            actionIcon: '',
+            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
           }
         ]
       }
@@ -150,7 +150,7 @@ Polymer({
       inputType: 'dropdown',
       inputChoices: ['regular', 'small', 'auto']
     },
-    icon: {
+    statusIcon: {
       type: String,
       defaultValue: 'px-utl:filter'
     },
@@ -158,13 +158,13 @@ Polymer({
       type: String,
       defaultValue: '26 Filters'
     },
-    action: {
+    actionIcon: {
       type: String,
       defaultValue: 'px-nav:close'
     },
     lightDomContent: {
       type: String,
-      defaultValue: '<px-icon slot="icon" icon="px-utl:filter"></px-icon><div slot="content">26 Filters 2,479,322 Devices</div>'
+      defaultValue: '<px-icon slot="left" icon="px-utl:filter"></px-icon><div slot="content">26 Filters 2,479,322 Devices</div>'
     }
   },
   showCustomContent: function(selectedTab, contentToShow) {
