@@ -49,23 +49,29 @@
 }
 
 .regular {
-  font-size: calculateRem(16px);
-  height: calculateRem(40px);
+  font-size: calculateRem(15px);
+  height: calculateRem(80px);
   display: flex;
   align-items: center;
   animation: ContextualNotificationRegular .5s ease;
+  @include media-query(lap-and-up) {
+    height: calculateRem(40px);
+  }
 }
 
 .small {
   font-size: calculateRem(12px);
-  height: calculateRem(20px);
+  height: calculateRem(40px);
   display: flex;
   align-items: center;
   animation: ContextualNotificationSmall .5s ease;
+  @include media-query(lap-and-up) {
+    height: calculateRem(20px);
+  }
 }
 
 .auto {
-  font-size: calculateRem(16px);
+  font-size: calculateRem(15px);
   height: auto;
   display: flex;
   align-items: center;
