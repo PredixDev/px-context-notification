@@ -6,12 +6,12 @@
     properties:{
 
       /**
-       * [Optional] The icon to display to the left of the content in the
-       * contextual notification
+       * The icon to display on the left side of the contextual notification
        * @type {String}
        */
       statusIcon: {
-        type: String
+        type: String,
+        value: ''
       },
       /**
        * The content to display in the contextual notification
@@ -21,20 +21,22 @@
         type: String
       },
       /**
-       * [Optional] The icon or button to display on the right side of the
-       * contextual notification
+       * The icon or button to display on the right side of the contextual
+       * notification
        * @type {String}
        */
       actionIcon: {
-        type: String
+        type: String,
+        value: ''
       },
       /**
-       * The status of the contextual notification, e.g. warning, info. This will
-       * be reflected as the background color of the notification.
+       * The type of contextual notification defines the visual styling. Should
+       * be one of important, warning, error, info/information, healthy, or unknown.
        * @type {String}
        */
       type: {
-        type: String
+        type: String,
+        value: 'info'
       },
       /**
        * The size of the contextual notification, e.g. regular or small. This
@@ -43,7 +45,8 @@
        * @type {String}
        */
       size: {
-        type: String
+        type: String,
+        value: 'regular'
       }
     }
   });
