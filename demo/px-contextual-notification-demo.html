@@ -58,7 +58,7 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification type="{{props.type.value}}" size="{{props.size.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon"{{props.actionIcon.value}}">
+      <px-contextual-notification type="{{props.type.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon"{{props.actionIcon.value}}" opened="{{props.opened.value}}">
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
           <button slot="right" class="whiteButton">Undo</button>
         </template>
@@ -114,7 +114,6 @@ Polymer({
           {
             configName: 'Confirmation',
             type: 'important',
-            size: 'regular',
             content: 'Widget has been removed from your dashboard.',
             statusIcon: 'px-utl:delete',
             actionIcon: '',
@@ -123,7 +122,6 @@ Polymer({
           {
             configName: 'Informational',
             type: 'info',
-            size: 'regular',
             content: '',
             statusIcon: '',
             actionIcon: '',
@@ -144,12 +142,6 @@ Polymer({
       inputType: 'dropdown',
       inputChoices: ['important', 'warning', 'error', 'info', 'unknown', 'healthy']
     },
-    size: {
-      type: String,
-      defaultValue: 'regular',
-      inputType: 'dropdown',
-      inputChoices: ['regular', 'small', 'auto']
-    },
     statusIcon: {
       type: String,
       defaultValue: 'px-utl:filter'
@@ -161,6 +153,11 @@ Polymer({
     actionIcon: {
       type: String,
       defaultValue: 'px-nav:close'
+    },
+    opened: {
+      type: Boolean,
+      defaultValue: true,
+      inputType: 'toggle'
     },
     lightDomContent: {
       type: String,

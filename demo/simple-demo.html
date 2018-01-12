@@ -30,6 +30,13 @@
       padding-bottom: 2px;
     }
   </style>
+  <custom-style>
+    <style>
+      .auto-size-notification {
+        --px-contextual-notification-height: auto;
+      }
+    </style>
+  </custom-style>
 
 </head>
 
@@ -41,33 +48,33 @@
   <h2>A static contextual notification</h2>
   <px-contextual-notification
     type="info"
-    size="regular"
     status-icon="px-utl:filter"
-    content="26 Filters 2,479,322 Devices">
+    content="26 Filters 2,479,322 Devices"
+    opened>
     <div slot="right"></div>
   </px-contextual-notification>
 
   <h2>A confirmation contextual notification with actions</h2>
   <px-contextual-notification
     type="healthy"
-    size="regular"
     status-icon="px-utl:confirmed"
     content="Your dashboard has been successfully created."
-    action-icon="px-nav:close">
+    action-icon="px-nav:close"
+    opened>
   </px-contextual-notification>
   <br>
   <px-contextual-notification
     type="important"
-    size="regular"
     status-icon="px-utl:delete"
-    content="Widget has been removed from your dashboard.">
+    content="Widget has been removed from your dashboard."
+    opened>
     <button slot="right" class="whiteButton">Undo</button>
   </px-contextual-notification>
 
   <h2>An informational contextual notification with actions</h2>
   <px-contextual-notification
     type="info"
-    size="regular">
+    opened>
     <div slot="left"></div>
     <div slot="content" class="chips">
       <px-chip content="Name" show-icon not-selectable></px-chip>
@@ -79,25 +86,28 @@
 
   <h2>A small contextual notification with no icons</h2>
   <px-contextual-notification
+    small
     type="info"
-    size="small"
-    content="26 Filters">
+    content="26 Filters"
+    opened>
     <div slot="left"></div>
     <div slot="right"></div>
   </px-contextual-notification>
 
   <h2>A contextual notification with overflowing content</h2>
   <px-contextual-notification
+    class="auto-size-notification"
     type="healthy"
-    size="auto"
     status-icon="px-utl:confirmed"
     content="Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?"
-    action-icon="px-nav:close">
+    action-icon="px-nav:close"
+    opened>
   </px-contextual-notification>
   <br>
   <px-contextual-notification
+    class="auto-size-notification"
     type="info"
-    size="auto">
+    opened>
     <div slot="left"></div>
     <div slot="content" class="chips">
       <px-chip content="Name" show-icon not-selectable></px-chip>

@@ -24,25 +24,74 @@ Custom property | Description
 <dom-module id="px-contextual-notification">
   <template>
     <style include="px-contextual-notification-styles"></style>
-
-    <div class$="contextual-notification {{type}} {{size}}">
-      <div class="left">
+      <div class="contextual-notification-left">
         <slot name="left">
-          <px-icon class="icon" icon="{{statusIcon}}"></px-icon>
+          <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
         </slot>
       </div>
-      <div class="content">
+      <div class="contextual-notification-content">
         <slot name="content">
           <div>{{content}}</div>
         </slot>
       </div>
-      <div class="right">
+      <div class="contextual-notification-right">
         <slot name="right">
-          <px-icon class="icon" icon={{actionIcon}}></px-icon>
+          <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
         </slot>
       <div>
-    </div>
 
   </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'px-contextual-notification',
+      properties:{
+
+        /**
+         * The icon to display on the left side of the contextual notification
+         */
+        statusIcon: {
+          type: String,
+          value: ''
+        },
+        /**
+         * The content to display in the contextual notification
+         */
+        content: {
+          type: String
+        },
+        /**
+         * The icon or button to display on the right side of the contextual
+         * notification
+         */
+        actionIcon: {
+          type: String,
+          value: ''
+        },
+        /**
+         * The type of contextual notification defines the visual styling. Should
+         * be one of important, warning, error, info/information, healthy, or unknown.
+         */
+        type: {
+          type: String,
+          value: 'info',
+          reflectToAttribute: true
+        },
+        small: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+
+        opened: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        }
+      }
+    });
+  })();
+</script>
 </dom-module>
-<script src="dist/px-contextual-notification.js"></script>

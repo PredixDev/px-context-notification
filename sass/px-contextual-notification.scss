@@ -22,89 +22,67 @@
 @import "px-headings-design/_base.headings.scss";
 
 // Component
-
-@keyframes ContextualNotificationRegular {
-  from {
-    height: calculateRem(0px);
-  }
-  to {
-    height: calculateRem(40px);
-  }
-}
-
-@keyframes ContextualNotificationSmall {
-  from {
-    height: calculateRem(0px);
-  }
-  to {
-    height: calculateRem(20px);
-  }
-}
-
-.contextual-notification {
+:host {
+  display: flex;
   padding-left: calculateRem(15px);
   padding-right: calculateRem(15px);
   width: inherit;
   box-sizing: content-box;
+  opacity: 0;
+  height: 0;
+  transition: height .5s ease-in-out, opacity .5s ease-in-out;
 }
 
-.regular {
+:host([opened]) {
+  opacity: 1;
+}
+
+:host([opened]) {
   font-size: calculateRem(15px);
-  height: calculateRem(80px);
-  display: flex;
+  height: var(--px-contextual-notification-height, calculateRem(80px));
   align-items: center;
-  animation: ContextualNotificationRegular .5s ease;
   @include media-query(lap-and-up) {
-    height: calculateRem(40px);
+    height: var(--px-contextual-notification-height, calculateRem(40px));
   }
 }
 
-.small {
+:host([opened][small]) {
   font-size: calculateRem(12px);
-  height: calculateRem(40px);
-  display: flex;
+  height: var(--px-contextual-notification-height, calculateRem(40px));
   align-items: center;
-  animation: ContextualNotificationSmall .5s ease;
   @include media-query(lap-and-up) {
-    height: calculateRem(20px);
+    height: var(--px-contextual-notification-height, calculateRem(20px));
   }
 }
 
-.auto {
-  font-size: calculateRem(15px);
-  height: auto;
-  display: flex;
-  align-items: center;
-  padding-top: calculateRem(10px);
-  padding-bottom: calculateRem(10px);
-}
-
-.content {
+.contextual-notification-content {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
+  min-width: 0;
+  margin: 10px 0;
 }
 
-.content ::slotted(div) {
+.contextual-notification-content ::slotted(div) {
   display: flex;
   flex-wrap: wrap;
 }
 
-.left {
+.contextual-notification-left {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   padding-right: calculateRem(5px);
 }
 
-.right {
+.contextual-notification-right {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   padding-left: calculateRem(15px);
 }
 
-.icon {
+.contextual-notification-icon {
   width: calculateRem(16px);
   height: calculateRem(16px);
   --iron-icon-width: 100%;
@@ -128,32 +106,32 @@
   background-color: rgba(255,255,255,0.4);
 }
 
-.important {
+:host([type="important"]) {
   background-color: var(--px-alert-label-background-color--important, red);
   color: var(--px-alert-label-text-color--important, white);
 }
 
-.warning {
+:host([type="warning"]) {
   background-color: var(--px-alert-label-background-color--warning, orange);
   color: var(--px-alert-label-text-color--warning, white);
 }
 
-.error {
+:host([type="error"]) {
   background-color: var(--px-alert-label-background-color--error, yellow);
   color: var(--px-alert-label-text-color--error, black);
 }
 
-.info, .information {
+:host([type="info"]), :host([type="information"]) {
   background-color: var(--px-alert-label-background-color--information, blue);
   color: var(--px-alert-label-text-color--information, white);
 }
 
-.healthy {
+:host([type="healthy"]) {
   background-color: var(--px-alert-label-background-color--healthy, green);
   color: var(--px-alert-label-text-color--healthy, white);
 }
 
-.unknown {
+:host([type="unknown"]) {
   background-color: var(--px-alert-label-background-color--unknown, gray);
   color: var(--px-alert-label-text-color--unknown, white);
 }
