@@ -80,6 +80,7 @@
   display: flex;
   align-items: center;
   padding-left: calculateRem(15px);
+  cursor: pointer;
 }
 
 .contextual-notification-icon {
@@ -94,7 +95,6 @@
   box-shadow: none;
   background-color: transparent;
   color: white;
-  cursor: pointer;
   outline: none;
 }
 

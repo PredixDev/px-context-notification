@@ -1,7 +1,5 @@
 <link defer rel="import" href="../polymer/polymer.html" />
 
-<link async rel="import" href="px-ge-svg-logo.html">
-<link defer rel="import" href="predix-logo.html">
 <link defer rel="import" href="css/px-contextual-notification-styles.html">
 
 <!--
@@ -34,7 +32,7 @@ Custom property | Description
           <div>{{content}}</div>
         </slot>
       </div>
-      <div class="contextual-notification-right">
+      <div class="contextual-notification-right" on-tap="handleTap">
         <slot name="right">
           <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
         </slot>
@@ -47,7 +45,7 @@ Custom property | Description
 
     Polymer({
       is: 'px-contextual-notification',
-      properties:{
+      properties: {
 
         /**
          * The icon to display on the left side of the contextual notification
@@ -90,8 +88,12 @@ Custom property | Description
           value: false,
           reflectToAttribute: true
         }
+      },
+
+      handleTap() {
+        this.fire('px-contextual-notification-action-tapped');
       }
     });
-  })();
+  });
 </script>
 </dom-module>
