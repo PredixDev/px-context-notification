@@ -21,26 +21,37 @@
 
   <body>
     <style include="px-theme-styles" is="custom-style"></style>
+    <custom-style>
+      <style>
+        .custom-size-notification {
+          --px-contextual-notification-height: 300px;
+        }
+      </style>
+    </custom-style>
 
-    <test-fixture id="PxBrandingBarFixture">
+    <test-fixture id="PxContextualNotificationFixture">
       <template>
-        <px-contextual-notification></px-contextual-notification>
+        <px-contextual-notification
+          type="healthy"
+          status-icon="px-utl:confirmed"
+          content="Your dashboard has been successfully created."
+          action-icon="px-nav:close"
+          opened
+        ></px-contextual-notification>
       </template>
     </test-fixture>
 
-    <test-fixture id="PxBrandingBarCustomContentFixture">
+    <test-fixture id="PxContextualNotificationCustomSizeFixture">
       <template>
-        <px-contextual-notification>
-          <div slot="title">Moar Predix Please</div>
-          <svg slot="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><circle cx="10" cy="75" r="8" style="fill: salmon;"></circle></svg>
-        </px-contextual-notification>
+        <px-contextual-notification
+          class="custom-size-notification"
+          type="important"
+          status-icon="px-utl:filter"
+          content="25 Filters"
+          opened
+        ></px-contextual-notification>
       </template>
     </test-fixture>
 
-    <test-fixture id="PxBrandingBarSetPropertiesFixture">
-      <template>
-        <px-contextual-notification application-title="Moar Predix Please"></px-contextual-notification>
-      </template>
-    </test-fixture>
   </body>
 </html>

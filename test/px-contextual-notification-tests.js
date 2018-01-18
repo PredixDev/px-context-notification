@@ -1,74 +1,61 @@
-describe('px-contextual-notification default look & behaviour', function () {
-  let brandingBarEl;
+describe('px-contextual-notification default look & behavior', function () {
+  let contextualNotifEl;
   beforeEach((done)=>{
-    brandingBarEl = fixture('PxBrandingBarFixture');
+    contextualNotifEl = fixture('PxContextualNotificationFixture');
+    contextualNotifEl.opened = true;
     flush(()=>{
       done();
     });
   });
 
   it('fixture should exist', function() {
-    expect(brandingBarEl).to.exist;
+    expect(contextualNotifEl).to.exist;
   });
 
-  it('element name should be correct', function() {
-    expect(brandingBarEl.tagName).to.equal('px-contextual-notification');
+  it('is hidden but not removed from the dom when the `opened` property is set to false', (done) => {
+    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
+    expect(contextualNotifRect.height > 0).to.be.true;
+    // expect(contextualNotifRect.height).to.be.closeTo(80, 5);
+    contextualNotifEl.opened = false;
+    expect(document.querySelector('px-contextual-notification')).to.exist;
+    setTimeout(() => {
+      contextualNotifRect = contextualNotifEl.getBoundingClientRect();
+      expect(contextualNotifRect.height === 0).to.be.true;
+      done();
+    }, 600);
   });
 
-  it('branding bar should have a GE logo by default', function() {
-    let geLogo = Polymer.dom(brandingBarEl.root).querySelector('px-ge-svg-logo');
-    expect(geLogo).to.exist;
-  });
+  it('fires the `px-contextual-notification-action-tapped` event when the contextual notification action icon is tapped', (done) => {
+    var eventSpy = sinon.spy();
+    contextualNotifEl.addEventListener('px-contextual-notification-action-tapped', eventSpy);
 
-  it('branding bar property should have default title of document.title', function() {
-    expect(brandingBarEl.applicationTitle).to.equal(document.title);
-  });
-
-  it('branding bar should display default title of document.title', function() {
-    let titleEl = Polymer.dom(brandingBarEl.root).querySelector('label');
-    expect(titleEl.textContent).to.equal(document.title);
+    setTimeout(() => {
+      const actionDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-right');
+      const actionIcon = actionDiv.querySelector('px-icon');
+      // Must use the MockInteractions tap event here to ensure test triggers listeners
+      // in Polymer 2.x with shadow DOM
+      // MockInteractions.tap(actionIcon);
+      actionIcon.click();
+      expect(eventSpy).to.have.been.calledOnce;
+      done();
+    }, 600);
   });
 
 });
 
-describe('px-contextual-notification attributes setting', function () {
-  it('setting application-title attribute should change displayed title', function() {
-    let brandingBarEl = fixture('PxBrandingBarSetPropertiesFixture');
-    expect(brandingBarEl.applicationTitle).to.equal('Moar Predix Please');
-  });
-});
-
-describe('px-contextual-notification custom slot content', function () {
-  let brandingBarEl;
+describe('px-contextual-notification custom size', function () {
+  let contextualNotifEl;
   beforeEach((done)=>{
-    brandingBarEl = fixture('PxBrandingBarCustomContentFixture');
+    contextualNotifEl = fixture('PxContextualNotificationCustomSizeFixture');
+    contextualNotifEl.opened = true;
     flush(()=>{
       done();
     });
   });
 
-  it('setting title slot should change title property', function() {
-    flush(function(done){
-      expect(brandingBarEl.applicationTitle).to.equal('Moar Predix Please');
-      done();
-    });
-  });
-
-  it('setting title slot should change displayed title', function() {
-    flush(function(done){
-      let titleEl = Polymer.dom(brandingBarEl.root).querySelector('label');
-      expect(titleEl.textContent).to.equal('Moar Predix Please');
-      done();
-    });
-  });
-
-  it('setting logo slot should change displayed logo', function() {
-    flush(function(done){
-      let logoEl = Polymer.dom(brandingBarEl).querySelector('circle');
-      expect(logoEl).exists();
-      expect(logoEl.tagName).to.equal('CIRCLE');
-      done();
-    });
+  it('gets its height from the --px-contextual-notification-height style variable', function () {
+    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
+    expect(contextualNotifRect.height).to.be.closeTo(300, 5);
   });
 
 });
