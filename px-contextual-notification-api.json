@@ -1,0 +1,321 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "A Contextual Notification provides a way to notify the user of a state change or\nactions taken on a specific context. The context can be a component, page, etc.\nContextual Notifications communicate where the notification applies to and catch\nthe user's attention. A Contextual Notification can be dismissed or persistent\ndepending on the type of action or state.\n\n### Basic usage\n\nA basic contextual notification takes text as content, a status icon\nto the left of the text, and an action icon on the right side of the notification.\n\n<px-contextual-notification\n  type=\"healthy\"\n  status-icon=\"px-utl:confirmed\"\n  content=\"Your dashboard has been successfully created.\"\n  action-icon=\"px-nav:close\"\n  opened>\n</px-contextual-notification>\n\nIt is possible to configure a contextual notification without either a status icon\nor an action icon/button. Simply set the relevant slot to an empty div:\n\n<px-contextual-notification\n  type=\"info\"\n  status-icon=\"px-utl:filter\"\n  content=\"26 Filters 2,479,322 Devices\"\n  opened>\n  <div slot=\"right\"></div>\n</px-contextual-notification>\n\n### Custom content\n\nYou can also use slots to insert custom content in the contextual notification.\nNote that it is not recommended to put anything but text or chips in the \"content\"\nslot, or to put anything but icons or buttons in the \"right\" slot.\n\n<px-contextual-notification\n  type=\"info\"\n  opened>\n  <div slot=\"left\"></div>\n  <div slot=\"content\" class=\"chips\">\n    <px-chip content=\"Name\" show-icon not-selectable></px-chip>\n    <px-chip content=\"Location\" show-icon not-selectable></px-chip>\n    <px-chip content=\"Date\" show-icon not-selectable></px-chip>\n  </div>\n  <button slot=\"right\">Clear All</button>\n</px-contextual-notification>\n\n### Styling\nThe following custom properties are available for styling:\n\nCustom property | Description\n----------------|-------------\n`--px-contextual-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.",
+      "summary": "",
+      "path": "px-contextual-notification.html",
+      "properties": [
+        {
+          "name": "statusIcon",
+          "type": "string",
+          "description": "The icon to display on the left side of the contextual notification",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 8
+            },
+            "end": {
+              "line": 99,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "The content to display in the contextual notification",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 8
+            },
+            "end": {
+              "line": 105,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "actionIcon",
+          "type": "string",
+          "description": "The icon or button to display on the right side of the contextual\nnotification",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 8
+            },
+            "end": {
+              "line": 113,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "description": "The type of contextual notification defines the visual styling. Should\nbe one of important, warning, error, info/information, healthy, or unknown.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 8
+            },
+            "end": {
+              "line": 122,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"info\""
+        },
+        {
+          "name": "small",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 8
+            },
+            "end": {
+              "line": 127,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 8
+            },
+            "end": {
+              "line": 133,
+              "column": 9
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "handleTap",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 136,
+              "column": 6
+            },
+            "end": {
+              "line": 138,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 89,
+          "column": 12
+        },
+        "end": {
+          "line": 139,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "status-icon",
+          "description": "The icon to display on the left side of the contextual notification",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 8
+            },
+            "end": {
+              "line": 99,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "description": "The content to display in the contextual notification",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 8
+            },
+            "end": {
+              "line": 105,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "action-icon",
+          "description": "The icon or button to display on the right side of the contextual\nnotification",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 8
+            },
+            "end": {
+              "line": 113,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "description": "The type of contextual notification defines the visual styling. Should\nbe one of important, warning, error, info/information, healthy, or unknown.",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 8
+            },
+            "end": {
+              "line": 122,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "small",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 8
+            },
+            "end": {
+              "line": 127,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "opened",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 8
+            },
+            "end": {
+              "line": 133,
+              "column": 9
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "left",
+          "range": {
+            "file": "px-contextual-notification.html",
+            "start": {
+              "line": 69,
+              "column": 8
+            },
+            "end": {
+              "line": 71,
+              "column": 15
+            }
+          }
+        },
+        {
+          "description": "",
+          "name": "content",
+          "range": {
+            "file": "px-contextual-notification.html",
+            "start": {
+              "line": 74,
+              "column": 8
+            },
+            "end": {
+              "line": 76,
+              "column": 15
+            }
+          }
+        },
+        {
+          "description": "",
+          "name": "right",
+          "range": {
+            "file": "px-contextual-notification.html",
+            "start": {
+              "line": 79,
+              "column": 8
+            },
+            "end": {
+              "line": 81,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "tagname": "px-contextual-notification"
+    }
+  ]
+}

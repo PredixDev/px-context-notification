@@ -1,17 +1,61 @@
 <link defer rel="import" href="../polymer/polymer.html" />
-
 <link defer rel="import" href="css/px-contextual-notification-styles.html">
 
 <!--
-### Usage
+A Contextual Notification provides a way to notify the user of a state change or
+actions taken on a specific context. The context can be a component, page, etc.
+Contextual Notifications communicate where the notification applies to and catch
+the user's attention. A Contextual Notification can be dismissed or persistent
+depending on the type of action or state.
 
-<px-contextual-notification></<px-contextual-notification>
+### Basic usage
+
+A basic contextual notification takes text as content, a status icon to the left
+of the text, and an action icon on the right side of the notification.
+
+<px-contextual-notification
+  type="healthy"
+  status-icon="px-utl:confirmed"
+  content="Your dashboard has been successfully created."
+  action-icon="px-nav:close"
+  opened>
+</px-contextual-notification>
+
+It is possible to configure a contextual notification without either a status
+icon or an action icon/button. Simply set the relevant slot to an empty div:
+
+<px-contextual-notification
+  type="info"
+  status-icon="px-utl:filter"
+  content="26 Filters 2,479,322 Devices"
+  opened>
+  <div slot="right"></div>
+</px-contextual-notification>
+
+### Custom content
+
+You can also use slots to insert custom content in the contextual notification.
+Note that it is not recommended to put anything but text or chips in the "content"
+slot, or to put anything but icons or buttons in the "right" slot.
+
+<px-contextual-notification
+  type="info"
+  opened>
+  <div slot="left"></div>
+  <div slot="content" class="chips">
+    <px-chip content="Name" show-icon not-selectable></px-chip>
+    <px-chip content="Location" show-icon not-selectable></px-chip>
+    <px-chip content="Date" show-icon not-selectable></px-chip>
+  </div>
+  <button slot="right">Clear All</button>
+</px-contextual-notification>
 
 ### Styling
 The following custom properties are available for styling:
 
 Custom property | Description
 ----------------|-------------
+`--px-contextual-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.
 
 @element px-contextual-notification
 @blurb A component providing a way to notify the user of a state change or actions taken on a specific context.
