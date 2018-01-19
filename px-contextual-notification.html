@@ -13,42 +13,42 @@ depending on the type of action or state.
 A basic contextual notification takes text as content, a status icon to the left
 of the text, and an action icon on the right side of the notification.
 
-<px-contextual-notification
-  type="healthy"
-  status-icon="px-utl:confirmed"
-  content="Your dashboard has been successfully created."
-  action-icon="px-nav:close"
-  opened>
-</px-contextual-notification>
+    <px-contextual-notification
+      type="healthy"
+      status-icon="px-utl:confirmed"
+      content="Your dashboard has been successfully created."
+      action-icon="px-nav:close"
+      opened>
+    </px-contextual-notification>
 
 It is possible to configure a contextual notification without either a status
-icon or an action icon/button. Simply set the relevant slot to an empty div:
+icon or an action icon/button:
 
-<px-contextual-notification
-  type="info"
-  status-icon="px-utl:filter"
-  content="26 Filters 2,479,322 Devices"
-  opened>
-  <div slot="right"></div>
-</px-contextual-notification>
+    <px-contextual-notification
+      small
+      type="info"
+      content="26 Filters 2,479,322 Devices"
+      opened>
+    </px-contextual-notification>
 
 ### Custom content
 
-You can also use slots to insert custom content in the contextual notification.
+You can use slots to insert custom content in the contextual notification.
 Note that it is not recommended to put anything but text or chips in the "content"
-slot, or to put anything but icons or buttons in the "right" slot.
+slot, or to put anything but icons or buttons in the "right" slot. Anything in
+the "right" slot should be actionable.
 
-<px-contextual-notification
-  type="info"
-  opened>
-  <div slot="left"></div>
-  <div slot="content" class="chips">
-    <px-chip content="Name" show-icon not-selectable></px-chip>
-    <px-chip content="Location" show-icon not-selectable></px-chip>
-    <px-chip content="Date" show-icon not-selectable></px-chip>
-  </div>
-  <button slot="right">Clear All</button>
-</px-contextual-notification>
+    <px-contextual-notification
+      type="info"
+      opened>
+      <div slot="left"></div>
+      <div slot="content" class="chips">
+        <px-chip content="Name" show-icon not-selectable></px-chip>
+        <px-chip content="Location" show-icon not-selectable></px-chip>
+        <px-chip content="Date" show-icon not-selectable></px-chip>
+      </div>
+      <button slot="right">Clear All</button>
+    </px-contextual-notification>
 
 ### Styling
 The following custom properties are available for styling:
@@ -125,12 +125,20 @@ Custom property | Description
           value: 'info',
           reflectToAttribute: true
         },
+        /**
+         * If true, the height of the notification will be reduced. Set this
+         * attribute when configuring a notification with text only (no icons
+         * or buttons).
+         */
         small: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
         },
-
+        /**
+         * If true, the contextual notification is visible. Set to false to hide
+         * the notification.
+         */
         opened: {
           type: Boolean,
           value: false,
