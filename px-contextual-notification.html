@@ -68,7 +68,9 @@ Custom property | Description
     <style include="px-contextual-notification-styles"></style>
       <div class="contextual-notification-left">
         <slot name="left">
-          <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
+          <template is="dom-if" if="[[statusIcon]]">
+            <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
+          </template>
         </slot>
       </div>
       <div class="contextual-notification-content">
@@ -78,7 +80,9 @@ Custom property | Description
       </div>
       <div class="contextual-notification-right" on-tap="handleTap">
         <slot name="right">
-          <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
+          <template is="dom-if" if="[[actionIcon]]">
+            <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
+          </template>
         </slot>
       <div>
 
