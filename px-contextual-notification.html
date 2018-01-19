@@ -144,9 +144,9 @@ Custom property | Description
         }
       },
       attached: function() {
-        this.setAttribute("tabindex", "0");
         this._el = this;
         this._actionEl = Polymer.dom(this.root).querySelector('.contextual-notification-right');
+        this._actionEl.setAttribute("tabindex", "0");
       },
       _handleTap() {
         this.fire('px-contextual-notification-action-tapped');
