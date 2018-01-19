@@ -27,7 +27,8 @@
   "dependencies": {
     "polymer": "#1.9 - 2",
     "px-theme": "^3.0.0",
-    "px-chip": "^1.1.0"
+    "px-chip": "^1.1.0",
+    "iron-a11y-keys": "^2.0.0"
   },
   "devDependencies": {
     "px-normalize-design": "^v1.0.0",

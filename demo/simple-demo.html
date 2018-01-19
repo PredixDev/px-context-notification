@@ -146,7 +146,9 @@
   const dismissableNotification = document.querySelector('#dismissableNotification');
 
   function dismissNotification() {
+    console.log('yo');
     this.opened = false;
+    console.log('hey');
   };
 
   document.addEventListener('px-contextual-notification-action-tapped', dismissNotification);

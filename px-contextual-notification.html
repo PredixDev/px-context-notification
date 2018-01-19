@@ -1,5 +1,6 @@
 <link defer rel="import" href="../polymer/polymer.html" />
 <link defer rel="import" href="css/px-contextual-notification-styles.html">
+<link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html"/>
 
 <!--
 A Contextual Notification provides a way to notify the user of a state change or
@@ -66,6 +67,7 @@ Custom property | Description
 <dom-module id="px-contextual-notification">
   <template>
     <style include="px-contextual-notification-styles"></style>
+    <iron-a11y-keys target="[[_actionEl]]" keys="enter" on-keys-pressed="_handleTap"></iron-a11y-keys>
       <div class="contextual-notification-left">
         <slot name="left">
           <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
@@ -76,7 +78,7 @@ Custom property | Description
           <div>{{content}}</div>
         </slot>
       </div>
-      <div class="contextual-notification-right" on-tap="handleTap">
+      <div class="contextual-notification-right" on-tap="_handleTap">
         <slot name="right">
           <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
         </slot>
@@ -131,11 +133,24 @@ Custom property | Description
           type: Boolean,
           value: false,
           reflectToAttribute: true
+        },
+        /**
+        * A reference to this HTML element. Used by iron-a11y-keys.
+        *
+        * @property _el
+        */
+        _el: {
+          type: HTMLElement
         }
       },
-
-      handleTap() {
+      attached: function() {
+        this.setAttribute("tabindex", "0");
+        this._el = this;
+        this._actionEl = Polymer.dom(this.root).querySelector('.contextual-notification-right');
+      },
+      _handleTap() {
         this.fire('px-contextual-notification-action-tapped');
+        console.log('tapped');
       }
     });
   })();
