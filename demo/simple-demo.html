@@ -140,10 +140,8 @@
 <script>
   const dismissableNotification = document.querySelector('#dismissableNotification');
 
-  function dismissNotification() {
-    console.log('yo');
-    this.opened = false;
-    console.log('hey');
+  function dismissNotification(e) {
+    e.target.opened = false;
   };
 
   document.addEventListener('px-contextual-notification-action-tapped', dismissNotification);

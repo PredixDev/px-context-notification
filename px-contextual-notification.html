@@ -1,6 +1,5 @@
 <link defer rel="import" href="../polymer/polymer.html" />
 <link defer rel="import" href="css/px-contextual-notification-styles.html">
-<link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html"/>
 
 <!--
 A Contextual Notification provides a way to notify the user of a state change or
@@ -67,7 +66,6 @@ Custom property | Description
 <dom-module id="px-contextual-notification">
   <template>
     <style include="px-contextual-notification-styles"></style>
-    <iron-a11y-keys target="[[_actionEl]]" keys="enter" on-keys-pressed="_handleTap"></iron-a11y-keys>
       <div class="contextual-notification-left">
         <slot name="left">
           <template is="dom-if" if="[[statusIcon]]">
@@ -83,7 +81,9 @@ Custom property | Description
       <div class="contextual-notification-right" on-tap="_handleTap">
         <slot name="right">
           <template is="dom-if" if="[[actionIcon]]">
-            <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
+            <button class="btn btn--bare btn--icon">
+              <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
+            </button>
           </template>
         </slot>
       <div>
@@ -96,7 +96,6 @@ Custom property | Description
     Polymer({
       is: 'px-contextual-notification',
       properties: {
-
         /**
          * The icon to display on the left side of the contextual notification
          */
@@ -145,24 +144,13 @@ Custom property | Description
           type: Boolean,
           value: false,
           reflectToAttribute: true
-        },
-        /**
-        * A reference to this HTML element. Used by iron-a11y-keys.
-        *
-        * @property _el
-        */
-        _el: {
-          type: HTMLElement
         }
       },
-      attached: function() {
-        this._el = this;
-        this._actionEl = Polymer.dom(this.root).querySelector('.contextual-notification-right');
-        this._actionEl.setAttribute("tabindex", "0");
-      },
-      _handleTap() {
+
+      _handleTap(e) {
+        const pathRoot = e.composedPath()[0];
+        if (pathRoot.classList.contains('contextual-notification-right')) return; // if there is nothing in the slot
         this.fire('px-contextual-notification-action-tapped');
-        console.log('tapped');
       }
     });
   })();
