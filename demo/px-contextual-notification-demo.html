@@ -58,12 +58,11 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification type="{{props.type.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon"{{props.actionIcon.value}}" opened="{{props.opened.value}}">
+      <px-contextual-notification type="{{props.type.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon="{{props.actionIcon.value}}" opened="{{props.opened.value}}">
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
           <button slot="right" class="whiteButton">Undo</button>
         </template>
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
-          <div slot="left"></div>
           <div slot="content" class="chips">
             <px-chip content="Name" show-icon not-selectable></px-chip>
             <px-chip content="Location" show-icon not-selectable></px-chip>
@@ -77,10 +76,10 @@
   <!-- END Component ------------------------------------------------------>
 
   <px-demo-component-snippet
-  slot="px-demo-component-snippet"
-  element-properties="{{props}}"
-  element-name="px-contextual-notification">
-</px-demo-component-snippet>
+    slot="px-demo-component-snippet"
+    element-properties="{{props}}"
+    element-name="px-contextual-notification">
+  </px-demo-component-snippet>
 </px-demo-interactive>
 
 <!-- API Viewer -->
@@ -125,7 +124,7 @@ Polymer({
             content: '',
             statusIcon: '',
             actionIcon: '',
-            lightDomContent: '<div slot="left"></div><div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
+            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
           }
         ]
       }
