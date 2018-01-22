@@ -1,5 +1,5 @@
 <link defer rel="import" href="../polymer/polymer.html" />
-<link defer rel="import" href="css/px-contextual-notification-styles.html">
+<link defer rel="import" href="css/px-contextual-notification-styles.html" />
 
 <!--
 A Contextual Notification provides a way to notify the user of a state change or
@@ -54,7 +54,7 @@ the "right" slot should be actionable.
 The following custom properties are available for styling:
 
 Custom property | Description
-----------------|-------------
+:----------------|:-------------
 `--px-contextual-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.
 
 @element px-contextual-notification
@@ -100,8 +100,7 @@ Custom property | Description
          * The icon to display on the left side of the contextual notification
          */
         statusIcon: {
-          type: String,
-          value: ''
+          type: String
         },
         /**
          * The content to display in the contextual notification
@@ -114,8 +113,7 @@ Custom property | Description
          * notification
          */
         actionIcon: {
-          type: String,
-          value: ''
+          type: String
         },
         /**
          * The type of contextual notification defines the visual styling. Should
