@@ -96,6 +96,10 @@ $inuit-enable-btn--icon : true;
   --iron-icon-height: 100%;
 }
 
+:host([type="error"]) .contextual-notification-icon {
+  color: var(--px-alert-label-text-color--error, black);
+}
+
 ::slotted(button) {
   border: 1px solid white;
   box-shadow: none;
