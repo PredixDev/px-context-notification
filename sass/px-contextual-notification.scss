@@ -100,20 +100,55 @@ $inuit-enable-btn--icon : true;
   color: var(--px-alert-label-text-color--error, black);
 }
 
-::slotted(button) {
+div ::slotted(button) {
   border: 1px solid white;
   box-shadow: none;
   background-color: transparent;
   color: white;
   outline: none;
+  cursor: pointer;
+  font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
 }
 
-::slotted(button:hover), ::slotted(button:focus){
+// can't use psuedo-selectors in slotted elements so we need to define the hover style separately here
+div ::slotted(button:hover) {
   background-color: rgba(255,255,255,0.2);
 }
 
-::slotted(button:active){
+div ::slotted(button:active){
   background-color: rgba(255,255,255,0.4);
+}
+
+// accessible text/icon/button colors for yellow notification
+:host([type="error"]) div ::slotted(button) {
+  color: black;
+  border-color: black;
+}
+
+:host([type="error"]) div ::slotted(button:hover) {
+  background-color: rgba(0,0,0,0.2);
+}
+
+:host([type="error"]) div ::slotted(button:active){
+  background-color: rgba(0,0,0,0.4);
+}
+
+div ::slotted(div) {
+  --px-chip-border-color: white;
+  --px-chip-border-color--hover: white;
+  --px-chip-text-color: white;
+  --px-chip-icon-color: white;
+  --px-chip-icon-color--hover: white;
+  --px-chip-background-color--hover: rgba(255,255,255,0.2);
+}
+
+:host([type="error"]) div ::slotted(div)  {
+  --px-chip-border-color: black;
+  --px-chip-border-color--hover: black;
+  --px-chip-text-color: black;
+  --px-chip-icon-color: black;
+  --px-chip-icon-color--hover: black;
+  --px-chip-background-color--hover: rgba(0,0,0,0.2);
 }
 
 :host([type="important"]) {
