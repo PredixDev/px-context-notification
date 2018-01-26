@@ -133,24 +133,6 @@ div ::slotted(button:active){
   background-color: rgba(0,0,0,0.4);
 }
 
-div ::slotted(div) {
-  --px-chip-border-color: white;
-  --px-chip-border-color--hover: white;
-  --px-chip-text-color: white;
-  --px-chip-icon-color: white;
-  --px-chip-icon-color--hover: white;
-  --px-chip-background-color--hover: rgba(255,255,255,0.2);
-}
-
-:host([type="error"]) div ::slotted(div)  {
-  --px-chip-border-color: black;
-  --px-chip-border-color--hover: black;
-  --px-chip-text-color: black;
-  --px-chip-icon-color: black;
-  --px-chip-icon-color--hover: black;
-  --px-chip-background-color--hover: rgba(0,0,0,0.2);
-}
-
 :host([type="important"]) {
   background-color: var(--px-alert-label-background-color--important, red);
   color: var(--px-alert-label-text-color--important, white);

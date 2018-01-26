@@ -1,5 +1,5 @@
-<link defer rel="import" href="../polymer/polymer.html" />
-<link defer rel="import" href="css/px-contextual-notification-styles.html" />
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="css/px-contextual-notification-styles.html" />
 
 <!--
 A Contextual Notification provides a way to notify the user of a state change or
@@ -68,9 +68,9 @@ Custom property | Description
     <style include="px-contextual-notification-styles"></style>
       <div class="contextual-notification-left">
         <slot name="left">
-          <template is="dom-if" if="[[statusIcon]]">
+          <div class$="[[_hideIfEmpty(statusIcon)]]">
             <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
-          </template>
+          </div>
         </slot>
       </div>
       <div class="contextual-notification-content">
@@ -80,11 +80,11 @@ Custom property | Description
       </div>
       <div class="contextual-notification-right" on-tap="_handleTap">
         <slot name="right">
-          <template is="dom-if" if="[[actionIcon]]">
+          <div class$="[[_hideIfEmpty(actionIcon)]]">
             <button class="btn btn--bare btn--icon">
               <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
             </button>
-          </template>
+        </div>
         </slot>
       <div>
 
@@ -100,7 +100,8 @@ Custom property | Description
          * The icon to display on the left side of the contextual notification
          */
         statusIcon: {
-          type: String
+          type: String,
+          value: null
         },
         /**
          * The content to display in the contextual notification
@@ -113,7 +114,8 @@ Custom property | Description
          * notification
          */
         actionIcon: {
-          type: String
+          type: String,
+          value: null
         },
         /**
          * The type of contextual notification defines the visual styling. Should
@@ -143,6 +145,10 @@ Custom property | Description
           value: false,
           reflectToAttribute: true
         }
+      },
+
+      _hideIfEmpty(icon) {
+        if (typeof icon !== "string" || icon === '') return 'hidden';
       },
 
       _handleTap(e) {
