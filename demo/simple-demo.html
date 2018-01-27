@@ -29,6 +29,26 @@
       }
     </style>
   </custom-style>
+  <custom-style>
+    <style is="custom-style">
+      .whiteChip {
+        --px-chip-border-color: white;
+        --px-chip-border-color--hover: white;
+        --px-chip-text-color: white;
+        --px-chip-icon-color: white;
+        --px-chip-icon-color--hover: white;
+        --px-chip-background-color--hover: rgba(255,255,255,0.2);
+      }
+      .blackChip {
+        --px-chip-border-color: black;
+        --px-chip-border-color--hover: black;
+        --px-chip-text-color: black;
+        --px-chip-icon-color: black;
+        --px-chip-icon-color--hover: black;
+        --px-chip-background-color--hover: rgba(0,0,0,0.2);
+      }
+    </style>
+  </custom-style>
 
 </head>
 
@@ -67,18 +87,6 @@
   <px-contextual-notification
     type="error"
     opened>
-    <custom-style>
-      <style is="custom-style">
-        .blackChip {
-          --px-chip-border-color: black;
-          --px-chip-border-color--hover: black;
-          --px-chip-text-color: black;
-          --px-chip-icon-color: black;
-          --px-chip-icon-color--hover: black;
-          --px-chip-background-color--hover: rgba(0,0,0,0.2);
-        }
-      </style>
-    </custom-style>
     <div slot="content" class="chips">
       <px-chip class="blackChip" content="Name" show-icon not-selectable></px-chip>
       <px-chip class="blackChip" content="Location" show-icon not-selectable></px-chip>
@@ -110,18 +118,6 @@
     type="info"
     opened>
 
-    <custom-style>
-      <style is="custom-style">
-        .whiteChip {
-          --px-chip-border-color: white;
-          --px-chip-border-color--hover: white;
-          --px-chip-text-color: white;
-          --px-chip-icon-color: white;
-          --px-chip-icon-color--hover: white;
-          --px-chip-background-color--hover: rgba(255,255,255,0.2);
-        }
-      </style>
-    </custom-style>
     <div slot="content" class="chips">
       <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
       <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
