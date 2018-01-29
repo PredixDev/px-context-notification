@@ -151,11 +151,20 @@
 </html>
 
 <script>
-  const dismissableNotification = document.querySelector('#dismissableNotification');
+  const contextualNotification = document.querySelectorAll('px-contextual-notification');
 
-  function dismissNotification(e) {
-    e.target.opened = false;
+  function _handleContextualNotificationTapped(e) {
+    let iconButtonAction;
+    if (e.detail.rootTarget.classList.contains('btn--icon')) {
+      iconButtonAction = e.detail.rootTarget.querySelector('px-icon').getAttribute('icon');
+    }
+    else if (e.detail.rootTarget.nodeName === 'BUTTON') {
+      iconButtonAction = (e.detail.rootTarget.firstChild.data);
+    }
+    console.log(iconButtonAction); // handle tap events accordingly based on action
   };
 
-  dismissableNotification.addEventListener('px-contextual-notification-action-tapped', dismissNotification);
+  contextualNotification.forEach(notif => {
+    notif.addEventListener('px-contextual-notification-action-tapped', _handleContextualNotificationTapped);
+  });
 </script>
