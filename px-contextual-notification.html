@@ -152,9 +152,10 @@ Custom property | Description
       },
 
       _handleTap(e) {
-        const pathRoot = e.composedPath()[0];
-        if (pathRoot.classList.contains('contextual-notification-right')) return; // if there is nothing in the slot
-        this.fire('px-contextual-notification-action-tapped');
+        const rootTarget = Polymer.dom(e).rootTarget;
+        // if there is nothing in the slot or the div is set to hidden
+        if (rootTarget.classList.contains('contextual-notification-right') || rootTarget.classList.contains('hidden')) return;
+        this.fire('px-contextual-notification-action-tapped', {"rootTarget": rootTarget});
       }
     });
   })();
