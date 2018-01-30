@@ -27,10 +27,6 @@
       .auto-size-notification {
         --px-contextual-notification-height: auto;
       }
-    </style>
-  </custom-style>
-  <custom-style>
-    <style is="custom-style">
       .whiteChip {
         --px-chip-border-color: white;
         --px-chip-border-color--hover: white;
@@ -57,102 +53,139 @@
     <style include="px-theme-styles" is="custom-style"></style>
   </custom-style>
 
-  <h2>A static contextual notification</h2>
+  <h2>There should only ever be one contextual notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
   <px-contextual-notification
+    id="contextualNotification"
     type="info"
     status-icon="px-utl:filter"
     content="26 Filters 2,479,322 Devices"
     opened>
   </px-contextual-notification>
-
-  <h2>A confirmation contextual notification with actions</h2>
-  <px-contextual-notification
-    id="dismissableNotification"
-    type="healthy"
-    status-icon="px-utl:confirmed"
-    content="Your dashboard has been successfully created."
-    action-icon="px-nav:close"
-    opened>
-  </px-contextual-notification>
   <br>
-  <px-contextual-notification
-    type="important"
-    status-icon="px-utl:delete"
-    content="Widget has been removed from your dashboard."
-    opened>
-    <button slot="right" class="whiteButton">Undo</button>
-  </px-contextual-notification>
-
-  <h2>An informational contextual notification with actions</h2>
-  <px-contextual-notification
-    type="error"
-    opened>
-    <div slot="content" class="chips">
-      <px-chip class="blackChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="blackChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="blackChip" content="Date" show-icon not-selectable></px-chip>
-    </div>
-    <button slot="right">Clear All</button>
-  </px-contextual-notification>
-
-  <h2>A small contextual notification with no icons</h2>
-  <px-contextual-notification
-    small
-    type="info"
-    content="26 Filters"
-    opened>
-  </px-contextual-notification>
-
-  <h2>A contextual notification with overflowing content</h2>
-  <px-contextual-notification
-    class="auto-size-notification"
-    type="healthy"
-    status-icon="px-utl:confirmed"
-    content="Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?"
-    action-icon="px-nav:close"
-    opened>
-  </px-contextual-notification>
-  <br>
-  <px-contextual-notification
-    class="auto-size-notification"
-    type="info"
-    opened>
-
-    <div slot="content" class="chips">
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-    </div>
-    <button slot="right">Clear All</button>
-  </px-contextual-notification>
+  <button class="btn" onclick="_handleUpdateNotification()">
+    Update notification
+  </button>
 
 </body>
 </html>
 
 <script>
-  const contextualNotificationsNodeList = document.querySelectorAll('px-contextual-notification');
-  const contextualNotificationsArray = Array.prototype.slice.call(contextualNotificationsNodeList);
+  let contextualNotification = document.querySelector('#contextualNotification');
+  contextualNotification.addEventListener('px-contextual-notification-action-tapped', _handleContextualNotificationTapped);
+
+  const undoBtn = document.createElement('button');
+  undoBtn.setAttribute('slot', 'right');
+  undoBtn.innerHTML = ('Undo');
+
+  const clearAllbtn = document.createElement('button');
+  clearAllbtn.setAttribute('slot', 'right');
+  clearAllbtn.innerHTML = ('Clear All');
+
+  const filterChips = document.createElement('div');
+  filterChips.setAttribute('slot', 'content');
+  const chip1 = document.createElement('px-chip');
+  const chip2 = document.createElement('px-chip');
+  const chip3 = document.createElement('px-chip');
+  chip1.setAttribute('content', 'name');
+  chip2.setAttribute('content', 'location');
+  chip3.setAttribute('content', 'date');
+  const chips = [chip1, chip2, chip3];
+  chips.forEach(chip => {
+    chip.setAttribute('class', 'blackChip');
+    chip.setAttribute('show-icon', true);
+    chip.setAttribute('not-selectable', true);
+  });
+  filterChips.append(chip1, chip2, chip3);
+
+  // Note: this array is just for demo purposes. In your app you should be
+  // generating your contextual notifications based on dynamic data and events.
+  const notificationsArray = [
+    {
+      type: 'info',
+      status: 'px-utl:filter',
+      content: '26 Filters 2,479,322 Devices',
+      action: '',
+      opened: true,
+      right: undoBtn
+    },
+    {
+      type: 'healthy',
+      status: 'px-utl:confirmed',
+      content: 'Your dashboard has been successfully created.',
+      action: 'px-nav:close',
+      opened: true
+    },
+    {
+      type: 'important',
+      status: 'px-utl:delete',
+      content: 'Widget has been removed from your dashboard.',
+      action: 'px-com:chat',
+      opened: true
+    },
+    {
+      type: 'healthy',
+      status: 'px-utl:confirmed',
+      content: 'Your dashboard has been successfully created.',
+      action: 'px-nav:close',
+      opened: true
+    },
+    {
+      type: 'error',
+      status: '',
+      content: '',
+      action: '',
+      opened: true,
+      content: filterChips,
+      right: clearAllbtn
+    },
+    {
+      type: 'info',
+      status: '',
+      content: '26 Filters',
+      action: '',
+      opened: true,
+      small: true
+    }
+
+  ]
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+  function _handleUpdateNotification() {
+    // remove any leftover slot content from previous notifications
+    while (contextualNotification.firstChild) {
+      contextualNotification.removeChild(contextualNotification.firstChild);
+    }
+    let randomIndex = getRandomInt(0, notificationsArray.length);
+    contextualNotification.setAttribute('type', notificationsArray[randomIndex].type);
+    contextualNotification.setAttribute('status-icon', notificationsArray[randomIndex].status);
+    contextualNotification.setAttribute('content', notificationsArray[randomIndex].content);
+    contextualNotification.setAttribute('action-icon', notificationsArray[randomIndex].action);
+    if (notificationsArray[randomIndex].small) {
+      contextualNotification.setAttribute('small', true);
+    } else {
+      contextualNotification.removeAttribute('small');
+    }
+    if (notificationsArray[randomIndex].opened) {
+      contextualNotification.setAttribute('opened', true);
+    } else {
+      contextualNotification.removeAttribute('opened');
+    }
+    // update slots if they have content
+    if (notificationsArray[randomIndex].left) {
+      contextualNotification.appendChild(notificationsArray[randomIndex].left);
+    }
+    if (notificationsArray[randomIndex].content) {
+      contextualNotification.appendChild(notificationsArray[randomIndex].content);
+    }
+    if (notificationsArray[randomIndex].right) {
+      contextualNotification.appendChild(notificationsArray[randomIndex].right);
+    }
+  }
 
   function _handleContextualNotificationTapped(e) {
     let iconButtonAction;
@@ -165,7 +198,4 @@
     console.log(iconButtonAction); // handle tap events accordingly based on action
   };
 
-  contextualNotificationsArray.forEach(notif => {
-    notif.addEventListener('px-contextual-notification-action-tapped', _handleContextualNotificationTapped);
-  });
 </script>
