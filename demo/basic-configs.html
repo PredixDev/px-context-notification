@@ -107,9 +107,8 @@
   <px-contextual-notification
     class="auto-size-notification"
     type="healthy"
-    status-icon="px-utl:confirmed"
-    content="Your dashboard has been successfully created, but let's add some more text to make this very long and see what happens and if I can get it to look good when the text wraps or if it will look really bad I dont know what do you think?"
-    action-icon="px-nav:close"
+    content="Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh."
+    action-icon="px-nav:reload"
     opened>
   </px-contextual-notification>
   <br>
@@ -148,4 +147,14 @@
   </px-contextual-notification>
 
 </body>
+
+<script>
+  const contextualNotification = document.querySelectorAll('px-contextual-notification');
+
+  contextualNotification.forEach(notif => {
+    notif.addEventListener('px-contextual-notification-action-tapped', () => {
+      console.log(`Event fired: 'px-contextual-notification-action-tapped'`);
+    });
+  });
+</script>
 </html>
