@@ -27,6 +27,14 @@
         padding-top: 2px;
         padding-bottom: 2px;
       }
+      .whiteChip {
+        --px-chip-border-color: white;
+        --px-chip-border-color--hover: white;
+        --px-chip-text-color: white;
+        --px-chip-icon-color: white;
+        --px-chip-icon-color--hover: white;
+        --px-chip-background-color--hover: rgba(255,255,255,0.2);
+      }
     </style>
 
     <!-- Header -->
@@ -52,9 +60,9 @@
         </template>
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
           <div slot="content" class="chips">
-            <px-chip content="Name" show-icon not-selectable></px-chip>
-            <px-chip content="Location" show-icon not-selectable></px-chip>
-            <px-chip content="Date" show-icon not-selectable></px-chip>
+            <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
+            <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
+            <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
           </div>
           <button slot="right">Clear All</button>
         </template>
@@ -112,7 +120,7 @@ Polymer({
             content: '',
             statusIcon: '',
             actionIcon: '',
-            lightDomContent: '<div slot="content" class="chips"><px-chip content="Name" show-icon not-selectable></px-chip><px-chip content="Location" show-icon not-selectable></px-chip><px-chip content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
+            lightDomContent: '<div slot="content" class="chips"><px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip><px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip><px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
           }
         ]
       }
