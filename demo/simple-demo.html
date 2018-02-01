@@ -54,16 +54,13 @@
   <custom-style>
     <style include="px-theme-styles" is="custom-style"></style>
   </custom-style>
-  <custom-style>
-    <style include="px-contextual-notification-styles"></style>
-  </custom-style>
 <dom-bind>
   <template is="dom-bind">
     <h2>There should only ever be one contextual notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
     <px-contextual-notification
       type=[[type]]
       status-icon=[[status]]
-      content=[[content]]
+      content=[[contentString]]
       action-icon=[[action]]
       opened=[[opened]]
       small=[[small]]>
@@ -79,10 +76,10 @@
           <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
           <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
         </div>
-      </template>
+    </template>
 
     </px-contextual-notification>
-
+    <br>
     <div>
       <button class="btn u-mt" on-click="_static">
         Static notification
@@ -100,7 +97,6 @@
         Autosized notification
       </button>
     </div>
-
   </template>
 </dom-bind>
 
@@ -109,85 +105,96 @@
 
 <script>
 
-  let app = Polymer.Element ? document.querySelector('dom-bind') : document.querySelector('template[is="dom-bind"]');
 
-  app.type = 'healthy';
-  app.status = 'px-utl:confirmed';
-  app.content = 'Your dashboard has been successfully created.';
-  app.action = 'px-nav:close';
-  app.opened = true;
+  document.addEventListener('WebComponentsReady', function () {
 
-  app._static = function() {
-    app.type = 'info';
-    app.status = 'px-utl:filter';
-    app.content = '26 Filters 2,479,322 Devices';
-    app.action = '';
-    app.opened = true;
-    app.showUndoButton = false;
-    app.showChips = false;
-    app.showClearAllButton = false;
-    contextualNotification.classList.remove('auto-size-notification');
-  }
+    let app = Polymer.Element ? document.querySelector('dom-bind') : document.querySelector('template[is="dom-bind"]');
 
-  app._dismissible = function() {
     app.type = 'healthy';
     app.status = 'px-utl:confirmed';
-    app.content = 'Your dashboard has been successfully created.';
+    app.contentString = 'Your dashboard has been successfully created.';
     app.action = 'px-nav:close';
     app.opened = true;
-    app.showUndoButton = false;
-    app.showChips = false;
-    app.showClearAllButton = false;
-    contextualNotification.classList.remove('auto-size-notification');
-  }
 
-  app._withActions = function() {
-    app.type = 'important';
-    app.status = 'px-utl:delete';
-    app.content = 'Widget has been removed from your dashboard.';
-    app.action = '';
-    app.opened = true;
-    app.showUndoButton = true;
-    app.showChips = false;
-    app.showClearAllButton = false;
-    contextualNotification.classList.remove('auto-size-notification');
-  }
-
-  app._withChips = function() {
-    app.type = 'info';
-    app.status = '';
-    app.content = '';
-    app.action = '';
-    app.opened = true;
-    app.showUndoButton = false;
-    app.showChips = true;
-    app.showClearAllButton = true;
-    contextualNotification.classList.remove('auto-size-notification');
-  }
-
-  app._autosized = function() {
-    app.type = 'error';
-    app.status = '';
-    app.content = "Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh.";
-    app.action = '';
-    app.opened = true;
-    app.showUndoButton = false;
-    app.showChips = false;
-    app.showClearAllButton = false;
-    contextualNotification.classList.add('auto-size-notification');
-  }
-
-  function _handleActionIconButtonTapped() {
-    if (app.showUndoButton) {
-      console.log('Undo');
-    } else if (app.showClearAllButton) {
-      console.log('Clear All');
-    } else if (app.action === 'px-nav:close') {
-      app.opened = false;
+    app._static = function() {
+      app.type = 'info';
+      app.status = 'px-utl:filter';
+      app.contentString = '26 Filters 2,479,322 Devices';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      contextualNotification.classList.remove('auto-size-notification');
+      contextualNotification.updateStyles();
     }
-  }
 
-  const contextualNotification = document.querySelector('px-contextual-notification');
-  contextualNotification.addEventListener('px-contextual-notification-action-tapped', _handleActionIconButtonTapped);
+    app._dismissible = function() {
+      app.type = 'healthy';
+      app.status = 'px-utl:confirmed';
+      app.contentString = 'Your dashboard has been successfully created.';
+      app.action = 'px-nav:close';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      contextualNotification.classList.remove('auto-size-notification');
+      contextualNotification.updateStyles();
+    }
+
+    app._withActions = function() {
+      app.type = 'important';
+      app.status = 'px-utl:delete';
+      app.contentString = 'Widget has been removed from your dashboard.';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = true;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      contextualNotification.classList.remove('auto-size-notification');
+      contextualNotification.updateStyles();
+    }
+
+    app._withChips = function() {
+      app.type = 'info';
+      app.status = '';
+      app.contentString = '';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = true;
+      app.showClearAllButton = true;
+      contextualNotification.classList.remove('auto-size-notification');
+      contextualNotification.updateStyles();
+    }
+
+    app._autosized = function() {
+      app.type = 'error';
+      app.status = '';
+      app.contentString = "Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh.";
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      contextualNotification.classList.add('auto-size-notification');
+      contextualNotification.updateStyles();
+    }
+
+    function _handleActionIconButtonTapped() {
+      if (app.showUndoButton) {
+        console.log('Undo');
+      } else if (app.showClearAllButton) {
+        console.log('Clear All');
+      } else if (app.action === 'px-nav:close') {
+        console.log('Dismiss');
+        app.opened = false;
+      }
+    }
+
+    const contextualNotification = document.querySelector('px-contextual-notification');
+    contextualNotification.addEventListener('px-contextual-notification-action-tapped', _handleActionIconButtonTapped);
+  });
+
 
 </script>
