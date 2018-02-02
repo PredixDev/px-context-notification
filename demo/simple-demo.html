@@ -38,11 +38,11 @@
         --px-chip-background-color--hover: rgba(255,255,255,0.2);
       }
       .blackChip {
-        --px-chip-border-color: black;
-        --px-chip-border-color--hover: black;
-        --px-chip-text-color: black;
-        --px-chip-icon-color: black;
-        --px-chip-icon-color--hover: black;
+        --px-chip-border-color: var(--px-alert-label-text-color--error, black);
+        --px-chip-border-color--hover: var(--px-alert-label-text-color--error, black);
+        --px-chip-text-color: var(--px-alert-label-text-color--error, black);
+        --px-chip-icon-color: var(--px-alert-label-text-color--error, black);
+        --px-chip-icon-color--hover: var(--px-alert-label-text-color--error, black);
         --px-chip-background-color--hover: rgba(0,0,0,0.2);
       }
     </style>
@@ -110,10 +110,10 @@
 
     let app = Polymer.Element ? document.querySelector('dom-bind') : document.querySelector('template[is="dom-bind"]');
 
-    app.type = 'healthy';
-    app.status = 'px-utl:confirmed';
-    app.contentString = 'Your dashboard has been successfully created.';
-    app.action = 'px-nav:close';
+    app.type = 'info';
+    app.status = 'px-utl:filter';
+    app.contentString = '26 Filters 2,479,322 Devices';
+    app.action = '';
     app.opened = true;
 
     app._static = function() {

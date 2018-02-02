@@ -77,14 +77,13 @@ $inuit-enable-btn--icon : true;
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  padding-right: calculateRem(5px);
+  margin-right: calculateRem(5px);
 }
 
 .contextual-notification-right {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  padding-left: calculateRem(30px);
   cursor: pointer;
 }
 
@@ -94,6 +93,11 @@ $inuit-enable-btn--icon : true;
   height: calculateRem(16px);
   --iron-icon-width: 100%;
   --iron-icon-height: 100%;
+}
+
+div.contextual-notification-right button,
+div.contextual-notification-right ::slotted(button) {
+  margin-left: calculateRem(30px);
 }
 
 :host([type="error"]) .contextual-notification-icon {
@@ -119,10 +123,10 @@ div ::slotted(button:active){
   background-color: rgba(255,255,255,0.4);
 }
 
-// accessible text/icon/button colors for yellow notification
+// accessible text/icon/button colors for yellow (error) notification
 :host([type="error"]) div ::slotted(button) {
-  color: black;
-  border-color: black;
+  color: var(--px-alert-label-text-color--error, black);
+  border-color: var(--px-alert-label-text-color--error, black);
 }
 
 :host([type="error"]) div ::slotted(button:hover) {

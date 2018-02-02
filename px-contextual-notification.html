@@ -66,12 +66,8 @@ Custom property | Description
 <dom-module id="px-contextual-notification">
   <template>
     <style include="px-contextual-notification-styles"></style>
-      <div class="contextual-notification-left">
-        <slot name="left">
-          <div class$="[[_hideIfEmpty(statusIcon)]]">
-            <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
-          </div>
-        </slot>
+      <div class$="contextual-notification-left [[_hideIfEmpty(statusIcon)]]">
+        <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
       </div>
       <div class="contextual-notification-content">
         <slot name="content">
