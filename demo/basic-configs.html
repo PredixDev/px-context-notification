@@ -149,9 +149,10 @@
 </body>
 
 <script>
-  const contextualNotification = document.querySelectorAll('px-contextual-notification');
+  const contextualNotificationsNodeList = document.querySelectorAll('px-contextual-notification');
+  const contextualNotificationsArray = Array.prototype.slice.call(contextualNotificationsNodeList);
 
-  contextualNotification.forEach(notif => {
+  contextualNotificationsArray.forEach(notif => {
     notif.addEventListener('px-contextual-notification-action-tapped', () => {
       console.log(`Event fired: 'px-contextual-notification-action-tapped'`);
     });
