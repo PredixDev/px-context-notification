@@ -43,6 +43,26 @@ describe('px-contextual-notification default look & behavior', function () {
 
 });
 
+describe('px-contextual-notification with no icons', function () {
+  let contextualNotifEl;
+  beforeEach((done)=>{
+    contextualNotifEl = fixture('PxContextualNotificationWithoutIconsFixture');
+    contextualNotifEl.opened = true;
+    flush(()=>{
+      done();
+    });
+  });
+
+  it('does not allot space for icons if none are provided', function () {
+    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
+    let contentDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-content');
+    let contentDivRect = contentDiv.getBoundingClientRect();
+    expect(contentDivRect.left - contextualNotifRect.left).to.be.closeTo(15, 5);
+    expect(contextualNotifRect.right - contentDivRect.right).to.be.closeTo(15, 5);
+  });
+
+});
+
 describe('px-contextual-notification custom size', function () {
   let contextualNotifEl;
   beforeEach((done)=>{

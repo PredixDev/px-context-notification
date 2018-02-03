@@ -36,8 +36,20 @@
           status-icon="px-utl:confirmed"
           content="Your dashboard has been successfully created."
           action-icon="px-nav:close"
-          opened
-        ></px-contextual-notification>
+          opened>
+        </px-contextual-notification>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="PxContextualNotificationWithoutIconsFixture">
+      <template>
+        <px-contextual-notification
+          type="healthy"
+          status-icon=""
+          content="Your dashboard has been successfully created."
+          action-icon=""
+          opened>
+        </px-contextual-notification>
       </template>
     </test-fixture>
 
@@ -48,8 +60,8 @@
           type="important"
           status-icon="px-utl:filter"
           content="25 Filters"
-          opened
-        ></px-contextual-notification>
+          opened>
+        </px-contextual-notification>
       </template>
     </test-fixture>
 

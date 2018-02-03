@@ -18,27 +18,10 @@
 <!-- Demo DOM module -->
 <dom-module id="px-contextual-notification-demo">
   <template>
-    <style include="px-demo-styles">
-      .chips {
-        display: flex;
-      }
-      px-chip {
-        padding-right: 10px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-      }
-      .whiteChip {
-        --px-chip-border-color: white;
-        --px-chip-border-color--hover: white;
-        --px-chip-text-color: white;
-        --px-chip-icon-color: white;
-        --px-chip-icon-color--hover: white;
-        --px-chip-background-color--hover: rgba(255,255,255,0.2);
-      }
-    </style>
+  <style include="px-demo-styles"></style>
 
     <!-- Header -->
-    <px-demo-header
+  <px-demo-header
     module-name="px-contextual-notification"
     description="A component providing a way to notify the user of a state change or actions taken on a specific context."
     desktop tablet mobile>
@@ -57,14 +40,6 @@
       <px-contextual-notification type="{{props.type.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon="{{props.actionIcon.value}}" opened="{{props.opened.value}}">
         <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
           <button slot="right" class="whiteButton">Undo</button>
-        </template>
-        <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Informational')}}" restamp="true">
-          <div slot="content" class="chips">
-            <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-            <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-            <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-          </div>
-          <button slot="right">Clear All</button>
         </template>
       </px-contextual-notification>
 
@@ -113,14 +88,6 @@ Polymer({
             statusIcon: 'px-utl:delete',
             actionIcon: '',
             lightDomContent: '<button slot="right" class="whiteButton">Undo</button>'
-          },
-          {
-            configName: 'Informational',
-            type: 'info',
-            content: '',
-            statusIcon: '',
-            actionIcon: '',
-            lightDomContent: '<div slot="content" class="chips"><px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip><px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip><px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip></div><button slot="right">Clear All</button>'
           }
         ]
       }

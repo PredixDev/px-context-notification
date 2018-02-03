@@ -31,7 +31,13 @@ Second, import the component to your application with the following tag in your 
 Finally, use the component in your application:
 
 ```
-<px-contextual-notification application-title="Cool New App"></px-contextual-notification>
+<px-contextual-notification
+  type="healthy"
+  status-icon="px-utl:confirmed"
+  content="Your dashboard has been successfully created."
+  action-icon="px-nav:close"
+  opened>
+</px-contextual-notification>
 ```
 
 <br />
