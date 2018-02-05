@@ -29,10 +29,10 @@ $inuit-enable-btn--icon : true;
 // Component
 :host {
   display: flex;
+  align-items: center;
   padding-left: calculateRem(15px);
   padding-right: calculateRem(15px);
   width: inherit;
-  box-sizing: content-box;
   opacity: 0;
   height: 0;
   transition: height .5s ease-in-out, opacity .5s ease-in-out;
@@ -45,7 +45,6 @@ $inuit-enable-btn--icon : true;
 :host([opened]) {
   font-size: calculateRem(15px);
   height: var(--px-contextual-notification-height, calculateRem(80px));
-  align-items: center;
   @include media-query(lap-and-up) {
     height: var(--px-contextual-notification-height, calculateRem(40px));
   }
@@ -54,7 +53,6 @@ $inuit-enable-btn--icon : true;
 :host([opened][small]) {
   font-size: calculateRem(12px);
   height: var(--px-contextual-notification-height, calculateRem(40px));
-  align-items: center;
   @include media-query(lap-and-up) {
     height: var(--px-contextual-notification-height, calculateRem(20px));
   }

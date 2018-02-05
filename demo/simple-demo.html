@@ -7,6 +7,7 @@
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../../polymer/polymer.html"/>
+  <link rel="import" href="../../polymer/lib/elements/dom-bind.html">
   <link rel="import" href="../../px-theme/px-theme-styles.html">
   <link rel="import" href="../px-contextual-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
@@ -14,18 +15,16 @@
 
   <link rel="import" href="../css/px-contextual-notification-styles.html" />
 
-  <style>
-    .chips {
-      display: flex;
-    }
-    px-chip {
-      padding-right: 10px;
-      padding-top: 2px;
-      padding-bottom: 2px;
-    }
-  </style>
   <custom-style>
     <style is="custom-style">
+      .chips {
+        display: flex;
+      }
+      px-chip {
+        padding-right: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+      }
       .auto-size-notification {
         --px-contextual-notification-height: auto;
       }
@@ -76,8 +75,7 @@
           <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
           <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
         </div>
-    </template>
-
+      </template>
     </px-contextual-notification>
     <br>
     <div>
@@ -104,12 +102,9 @@
 </html>
 
 <script>
-
-
   document.addEventListener('WebComponentsReady', function () {
 
     let app = Polymer.Element ? document.querySelector('dom-bind') : document.querySelector('template[is="dom-bind"]');
-
     app.type = 'info';
     app.status = 'px-utl:filter';
     app.contentString = '26 Filters 2,479,322 Devices';

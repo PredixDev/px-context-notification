@@ -65,25 +65,25 @@ Custom property | Description
 <dom-module id="px-contextual-notification">
   <template>
     <style include="px-contextual-notification-styles"></style>
-      <div class$="contextual-notification-left [[_hideIfEmpty(statusIcon)]]">
-        <px-icon class="contextual-notification-icon" icon="{{statusIcon}}"></px-icon>
+    <div class$="contextual-notification-left [[_hideIfEmpty(statusIcon)]]">
+      <px-icon class="contextual-notification-icon" icon="[[statusIcon]]"></px-icon>
+    </div>
+    <div class="contextual-notification-content">
+      <slot name="content">
+        <div>[[content]]</div>
+      </slot>
+    </div>
+    <div class="contextual-notification-right" on-tap="_handleTap">
+      <slot name="right">
+        <div class$="[[_hideIfEmpty(actionIcon)]]">
+          <button class="btn btn--bare btn--icon">
+            <px-icon class="contextual-notification-icon" icon=[[actionIcon]]></px-icon>
+          </button>
       </div>
-      <div class="contextual-notification-content">
-        <slot name="content">
-          <div>{{content}}</div>
-        </slot>
-      </div>
-      <div class="contextual-notification-right" on-tap="_handleTap">
-        <slot name="right">
-          <div class$="[[_hideIfEmpty(actionIcon)]]">
-            <button class="btn btn--bare btn--icon">
-              <px-icon class="contextual-notification-icon" icon={{actionIcon}}></px-icon>
-            </button>
-        </div>
-        </slot>
-      <div>
-
+      </slot>
+    <div>
   </template>
+
   <script>
   (function() {
     'use strict';
@@ -96,13 +96,14 @@ Custom property | Description
          */
         statusIcon: {
           type: String,
-          value: null
+          value: ''
         },
         /**
          * The content to display in the contextual notification
          */
         content: {
-          type: String
+          type: String,
+          value: ''
         },
         /**
          * The icon or button to display on the right side of the contextual
@@ -110,7 +111,7 @@ Custom property | Description
          */
         actionIcon: {
           type: String,
-          value: null
+          value: ''
         },
         /**
          * The type of contextual notification defines the visual styling. Should
