@@ -2,15 +2,15 @@
 <link rel="import" href="css/px-context-notification-styles.html" />
 
 <!--
-A Contextual Notification provides a way to notify the user of a state change or
+A context notification provides a way to notify the user of a state change or
 actions taken on a specific context. The context can be a component, page, etc.
-Contextual Notifications communicate where the notification applies to and catch
-the user's attention. A Contextual Notification can be dismissed or persistent
+context notifications communicate where the notification applies to and catch
+the user's attention. A context notification can be dismissed or persistent
 depending on the type of action or state.
 
 ### Basic usage
 
-A basic contextual notification takes text as content, a status icon to the left
+A basic context notification takes text as content, a status icon to the left
 of the text, and an action icon on the right side of the notification.
 
     <px-context-notification
@@ -21,7 +21,7 @@ of the text, and an action icon on the right side of the notification.
       opened>
     </px-context-notification>
 
-It is possible to configure a contextual notification without either a status
+It is possible to configure a context notification without either a status
 icon or an action icon/button:
 
     <px-context-notification
@@ -33,7 +33,7 @@ icon or an action icon/button:
 
 ### Custom content
 
-You can use slots to insert custom content in the contextual notification.
+You can use slots to insert custom content in the context notification.
 Note that it is not recommended to put anything but text or chips in the "content"
 slot, or to put anything but icons or buttons in the "right" slot. Anything in
 the "right" slot should be actionable. There should only every be one top level
@@ -55,7 +55,7 @@ The following custom properties are available for styling:
 
 Custom property | Description
 :----------------|:-------------
-`--px-context-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.
+`--px-context-notification-height` | Height of the context notification. Defaults to 80px on a mobile device, and 40px otherwise.
 
 @element px-context-notification
 @blurb A component providing a way to notify the user of a state change or actions taken on a specific context.
@@ -93,14 +93,14 @@ Custom property | Description
       is: 'px-context-notification',
       properties: {
         /**
-         * The icon to display on the left side of the contextual notification
+         * The icon to display on the left side of the context notification
          */
         statusIcon: {
           type: String,
           value: ''
         },
         /**
-         * The content to display in the contextual notification
+         * The content to display in the context notification
          */
         content: {
           type: String,
@@ -115,7 +115,7 @@ Custom property | Description
           value: ''
         },
         /**
-         * The type of contextual notification defines the visual styling. Should
+         * The type of context notification defines the visual styling. Should
          * be one of important, warning, error, info/information, healthy, or unknown.
          */
         type: {
@@ -134,7 +134,7 @@ Custom property | Description
           reflectToAttribute: true
         },
         /**
-         * If true, the contextual notification is visible. Set to false to hide
+         * If true, the context notification is visible. Set to false to hide
          * the notification.
          */
         opened: {

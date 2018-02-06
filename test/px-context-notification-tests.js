@@ -24,7 +24,7 @@ describe('px-context-notification default look & behavior', function () {
     }, 600);
   });
 
-  it('fires the `px-context-notification-action-tapped` event when the contextual notification action icon is tapped', (done) => {
+  it('fires the `px-context-notification-action-tapped` event when the context notification action icon is tapped', (done) => {
     var eventSpy = sinon.spy();
     contextualNotifEl.addEventListener('px-context-notification-action-tapped', eventSpy);
 
