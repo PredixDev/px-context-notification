@@ -13,8 +13,6 @@
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
-  <link rel="import" href="../css/px-contextual-notification-styles.html" />
-
   <custom-style>
     <style is="custom-style">
       .auto-size-notification {
@@ -54,58 +52,56 @@
       }
     </style>
   </custom-style>
-
 </head>
 
 <body>
   <custom-style>
     <style include="px-theme-styles" is="custom-style"></style>
   </custom-style>
-<dom-bind>
-  <template is="dom-bind">
-    <h2>There should only ever be one contextual notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
-    <px-contextual-notification
-      type=[[type]]
-      status-icon=[[status]]
-      content=[[contentString]]
-      action-icon=[[action]]
-      opened=[[opened]]
-      small=[[small]]>
-      <template is="dom-if" if="[[showUndoButton]]" restamp>
-        <button slot="right" class="btn--light">Undo</button>
-      </template>
-      <template is="dom-if" if="[[showClearAllButton]]" restamp>
-        <button slot="right" class="btn--light">Clear All</button>
-      </template>
-      <template is="dom-if" if="[[showChips]]" restamp>
-        <div slot="content" class="chips">
-          <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
-          <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
-          <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
-        </div>
-      </template>
-    </px-contextual-notification>
-    <br>
-    <div>
-      <button class="btn u-mt" on-click="_static">
-        Static notification
-      </button>
-      <button class="btn u-mt" on-click="_dismissible">
-        Dismissable notification
-      </button>
-      <button class="btn u-mt" on-click="_withActions">
-        Notification with actions
-      </button>
-      <button class="btn u-mt" on-click="_withChips">
-        Notification with chips
-      </button>
-      <button class="btn u-mt" on-click="_autosized">
-        Autosized notification
-      </button>
-    </div>
-  </template>
-</dom-bind>
-
+  <dom-bind>
+    <template is="dom-bind">
+      <h2>There should only ever be one contextual notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
+      <px-contextual-notification
+        type=[[type]]
+        status-icon=[[status]]
+        content=[[contentString]]
+        action-icon=[[action]]
+        opened=[[opened]]
+        small=[[small]]>
+        <template is="dom-if" if="[[showUndoButton]]" restamp>
+          <button slot="right" class="btn--light">Undo</button>
+        </template>
+        <template is="dom-if" if="[[showClearAllButton]]" restamp>
+          <button slot="right" class="btn--light">Clear All</button>
+        </template>
+        <template is="dom-if" if="[[showChips]]" restamp>
+          <div slot="content" class="chips">
+            <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+            <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+            <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+          </div>
+        </template>
+      </px-contextual-notification>
+      <br>
+      <div>
+        <button class="btn u-mt" on-click="_static">
+          Static notification
+        </button>
+        <button class="btn u-mt" on-click="_dismissible">
+          Dismissable notification
+        </button>
+        <button class="btn u-mt" on-click="_withActions">
+          Notification with actions
+        </button>
+        <button class="btn u-mt" on-click="_withChips">
+          Notification with chips
+        </button>
+        <button class="btn u-mt" on-click="_autosized">
+          Autosized notification
+        </button>
+      </div>
+    </template>
+  </dom-bind>
 </body>
 </html>
 
@@ -198,6 +194,5 @@
     const contextualNotification = document.querySelector('px-contextual-notification');
     contextualNotification.addEventListener('px-contextual-notification-action-tapped', _handleActionIconButtonTapped);
   });
-
 
 </script>

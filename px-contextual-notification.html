@@ -148,10 +148,7 @@ Custom property | Description
         if (typeof icon !== "string" || icon === '') return 'hidden';
       },
 
-      _handleTap(e) {
-        const rootTarget = Polymer.dom(e).rootTarget;
-        // if there is nothing in the slot or the div is set to hidden
-        if (rootTarget.classList.contains('contextual-notification-right') || rootTarget.classList.contains('hidden')) return;
+      _handleTap() {
         this.fire('px-contextual-notification-action-tapped');
       }
     });

@@ -74,7 +74,6 @@
         }
     </style>
   </custom-style>
-
 </head>
 
 <body>
@@ -168,16 +167,15 @@
     <button slot="right" class="btn--light">Clear All</button>
   </px-contextual-notification>
 
-</body>
+  <script>
+    const contextualNotificationsNodeList = document.querySelectorAll('px-contextual-notification');
+    const contextualNotificationsArray = Array.prototype.slice.call(contextualNotificationsNodeList);
 
-<script>
-  const contextualNotificationsNodeList = document.querySelectorAll('px-contextual-notification');
-  const contextualNotificationsArray = Array.prototype.slice.call(contextualNotificationsNodeList);
-
-  contextualNotificationsArray.forEach(notif => {
-    notif.addEventListener('px-contextual-notification-action-tapped', () => {
-      console.log(`Event fired: 'px-contextual-notification-action-tapped'`);
+    contextualNotificationsArray.forEach(notif => {
+      notif.addEventListener('px-contextual-notification-action-tapped', () => {
+        console.log(`Event fired: 'px-contextual-notification-action-tapped'`);
+      });
     });
-  });
-</script>
+  </script>
+</body>
 </html>
