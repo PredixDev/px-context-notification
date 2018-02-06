@@ -124,8 +124,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextualNotification.classList.remove('auto-size-notification');
-      contextualNotification.updateStyles();
+      contextNotification.classList.remove('auto-size-notification');
+      contextNotification.updateStyles();
     }
 
     app._dismissible = function() {
@@ -137,8 +137,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextualNotification.classList.remove('auto-size-notification');
-      contextualNotification.updateStyles();
+      contextNotification.classList.remove('auto-size-notification');
+      contextNotification.updateStyles();
     }
 
     app._withActions = function() {
@@ -150,8 +150,8 @@
       app.showUndoButton = true;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextualNotification.classList.remove('auto-size-notification');
-      contextualNotification.updateStyles();
+      contextNotification.classList.remove('auto-size-notification');
+      contextNotification.updateStyles();
     }
 
     app._withChips = function() {
@@ -163,8 +163,8 @@
       app.showUndoButton = false;
       app.showChips = true;
       app.showClearAllButton = true;
-      contextualNotification.classList.remove('auto-size-notification');
-      contextualNotification.updateStyles();
+      contextNotification.classList.remove('auto-size-notification');
+      contextNotification.updateStyles();
     }
 
     app._autosized = function() {
@@ -176,8 +176,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextualNotification.classList.add('auto-size-notification');
-      contextualNotification.updateStyles();
+      contextNotification.classList.add('auto-size-notification');
+      contextNotification.updateStyles();
     }
 
     function _handleActionIconButtonTapped() {
@@ -191,8 +191,8 @@
       }
     }
 
-    const contextualNotification = document.querySelector('px-context-notification');
-    contextualNotification.addEventListener('px-context-notification-action-tapped', _handleActionIconButtonTapped);
+    const contextNotification = document.querySelector('px-context-notification');
+    contextNotification.addEventListener('px-context-notification-action-tapped', _handleActionIconButtonTapped);
   });
 
 </script>

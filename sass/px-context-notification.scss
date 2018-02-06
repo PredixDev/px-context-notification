@@ -57,7 +57,7 @@ $inuit-enable-btn--icon : true;
   }
 }
 
-.contextual-notification-content {
+.context-notification-content {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -66,14 +66,14 @@ $inuit-enable-btn--icon : true;
   margin-bottom: calculateRem(10px);
 }
 
-.contextual-notification-left {
+.context-notification-left {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   margin-right: calculateRem(5px);
 }
 
-.contextual-notification-right {
+.context-notification-right {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@ $inuit-enable-btn--icon : true;
   cursor: pointer;
 }
 
-.contextual-notification-icon {
+.context-notification-icon {
   color: white;
   width: calculateRem(16px);
   height: calculateRem(16px);
@@ -89,7 +89,7 @@ $inuit-enable-btn--icon : true;
   --iron-icon-height: 100%;
 }
 
-:host([type="error"]) .contextual-notification-icon {
+:host([type="error"]) .context-notification-icon {
   color: var(--px-alert-label-text-color--error, black);
 }
 

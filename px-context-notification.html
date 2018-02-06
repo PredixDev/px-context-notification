@@ -66,19 +66,19 @@ Custom property | Description
 <dom-module id="px-context-notification">
   <template>
     <style include="px-context-notification-styles"></style>
-    <div class$="contextual-notification-left [[_hideIfEmpty(statusIcon)]]">
-      <px-icon class="contextual-notification-icon" icon="[[statusIcon]]"></px-icon>
+    <div class$="context-notification-left [[_hideIfEmpty(statusIcon)]]">
+      <px-icon class="context-notification-icon" icon="[[statusIcon]]"></px-icon>
     </div>
-    <div class="contextual-notification-content">
+    <div class="context-notification-content">
       <slot name="content">
         <div>[[content]]</div>
       </slot>
     </div>
-    <div class="contextual-notification-right" on-tap="_handleTap">
+    <div class="context-notification-right" on-tap="_handleTap">
       <slot name="right">
         <div class$="[[_hideIfEmpty(actionIcon)]]">
           <button class="btn btn--bare btn--icon">
-            <px-icon class="contextual-notification-icon" icon=[[actionIcon]]></px-icon>
+            <px-icon class="context-notification-icon" icon=[[actionIcon]]></px-icon>
           </button>
       </div>
       </slot>
@@ -107,7 +107,7 @@ Custom property | Description
           value: ''
         },
         /**
-         * The icon or button to display on the right side of the contextual
+         * The icon or button to display on the right side of the context
          * notification
          */
         actionIcon: {

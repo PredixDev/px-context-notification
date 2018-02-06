@@ -1,35 +1,35 @@
 describe('px-context-notification default look & behavior', function () {
-  let contextualNotifEl;
+  let contextNotifEl;
   beforeEach((done)=>{
-    contextualNotifEl = fixture('PxContextualNotificationFixture');
-    contextualNotifEl.opened = true;
+    contextNotifEl = fixture('PxContextNotificationFixture');
+    contextNotifEl.opened = true;
     flush(()=>{
       done();
     });
   });
 
   it('fixture should exist', function() {
-    expect(contextualNotifEl).to.exist;
+    expect(contextNotifEl).to.exist;
   });
 
   it('is hidden but not removed from the dom when the `opened` property is set to false', (done) => {
-    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
-    expect(contextualNotifRect.height > 0).to.be.true;
-    contextualNotifEl.opened = false;
+    let contextNotifRect = contextNotifEl.getBoundingClientRect();
+    expect(contextNotifRect.height > 0).to.be.true;
+    contextNotifEl.opened = false;
     expect(document.querySelector('px-context-notification')).to.exist;
     setTimeout(() => {
-      contextualNotifRect = contextualNotifEl.getBoundingClientRect();
-      expect(contextualNotifRect.height === 0).to.be.true;
+      contextNotifRect = contextNotifEl.getBoundingClientRect();
+      expect(contextNotifRect.height === 0).to.be.true;
       done();
     }, 600);
   });
 
   it('fires the `px-context-notification-action-tapped` event when the context notification action icon is tapped', (done) => {
     var eventSpy = sinon.spy();
-    contextualNotifEl.addEventListener('px-context-notification-action-tapped', eventSpy);
+    contextNotifEl.addEventListener('px-context-notification-action-tapped', eventSpy);
 
     setTimeout(() => {
-      const actionDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-right');
+      const actionDiv = Polymer.dom(contextNotifEl.root).querySelector('.context-notification-right');
       const actionIcon = actionDiv.querySelector('px-icon');
       actionIcon.click();
       expect(eventSpy).to.have.been.calledOnce;
@@ -40,18 +40,18 @@ describe('px-context-notification default look & behavior', function () {
 });
 
 describe('px-context-notification custom size', function () {
-  let contextualNotifEl;
+  let contextNotifEl;
   beforeEach((done)=>{
-    contextualNotifEl = fixture('PxContextualNotificationCustomSizeFixture');
-    contextualNotifEl.opened = true;
+    contextNotifEl = fixture('PxContextNotificationCustomSizeFixture');
+    contextNotifEl.opened = true;
     flush(()=>{
       done();
     });
   });
 
   it('gets its height from the --px-context-notification-height style variable', function () {
-    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
-    expect(contextualNotifRect.height).to.be.closeTo(300, 5);
+    let contextNotifRect = contextNotifEl.getBoundingClientRect();
+    expect(contextNotifRect.height).to.be.closeTo(300, 5);
   });
 
 });

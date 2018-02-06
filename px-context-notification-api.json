@@ -49,7 +49,7 @@
         {
           "name": "actionIcon",
           "type": "string",
-          "description": "The icon or button to display on the right side of the contextual\nnotification",
+          "description": "The icon or button to display on the right side of the context\nnotification",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -222,7 +222,7 @@
         },
         {
           "name": "action-icon",
-          "description": "The icon or button to display on the right side of the contextual\nnotification",
+          "description": "The icon or button to display on the right side of the context\nnotification",
           "sourceRange": {
             "start": {
               "line": 112,

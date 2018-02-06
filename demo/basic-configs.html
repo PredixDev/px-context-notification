@@ -168,10 +168,10 @@
   </px-context-notification>
 
   <script>
-    const contextualNotificationsNodeList = document.querySelectorAll('px-context-notification');
-    const contextualNotificationsArray = Array.prototype.slice.call(contextualNotificationsNodeList);
+    const contextNotificationsNodeList = document.querySelectorAll('px-context-notification');
+    const contextNotificationsArray = Array.prototype.slice.call(contextNotificationsNodeList);
 
-    contextualNotificationsArray.forEach(notif => {
+    contextNotificationsArray.forEach(notif => {
       notif.addEventListener('px-context-notification-action-tapped', () => {
         console.log(`Event fired: 'px-context-notification-action-tapped'`);
       });
