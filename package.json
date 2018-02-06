@@ -1,5 +1,5 @@
 {
-    "name": "px-contextual-notification",
+    "name": "px-context-notification",
     "author": "General Electric",
     "description": "A Px component that provides a way to notify the user of a state change or actions taken on a specific context.",
     "version": "0.0.1",
@@ -7,7 +7,7 @@
     "extName": null,
     "repository": {
         "type": "git",
-        "url": "https://github.com/PredixDev/px-contextual-notification.git"
+        "url": "https://github.com/PredixDev/px-context-notification.git"
     },
     "homepage": "http://predix.io/",
     "devDependencies": {

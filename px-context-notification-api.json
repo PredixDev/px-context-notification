@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "A Contextual Notification provides a way to notify the user of a state change or\nactions taken on a specific context. The context can be a component, page, etc.\nContextual Notifications communicate where the notification applies to and catch\nthe user's attention. A Contextual Notification can be dismissed or persistent\ndepending on the type of action or state.\n\n### Basic usage\n\nA basic contextual notification takes text as content, a status icon to the left\nof the text, and an action icon on the right side of the notification.\n\n    <px-contextual-notification\n      type=\"healthy\"\n      status-icon=\"px-utl:confirmed\"\n      content=\"Your dashboard has been successfully created.\"\n      action-icon=\"px-nav:close\"\n      opened>\n    </px-contextual-notification>\n\nIt is possible to configure a contextual notification without either a status\nicon or an action icon/button:\n\n    <px-contextual-notification\n      small\n      type=\"info\"\n      content=\"26 Filters 2,479,322 Devices\"\n      opened>\n    </px-contextual-notification>\n\n### Custom content\n\nYou can use slots to insert custom content in the contextual notification.\nNote that it is not recommended to put anything but text or chips in the \"content\"\nslot, or to put anything but icons or buttons in the \"right\" slot. Anything in\nthe \"right\" slot should be actionable.\n\n    <px-contextual-notification\n      type=\"info\"\n      opened>\n      <div slot=\"content\" class=\"chips\">\n        <px-chip content=\"Name\" show-icon not-selectable></px-chip>\n        <px-chip content=\"Location\" show-icon not-selectable></px-chip>\n        <px-chip content=\"Date\" show-icon not-selectable></px-chip>\n      </div>\n      <button slot=\"right\">Clear All</button>\n    </px-contextual-notification>\n\n### Styling\nThe following custom properties are available for styling:\n\nCustom property | Description\n:----------------|:-------------\n`--px-contextual-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.",
+      "description": "A Contextual Notification provides a way to notify the user of a state change or\nactions taken on a specific context. The context can be a component, page, etc.\nContextual Notifications communicate where the notification applies to and catch\nthe user's attention. A Contextual Notification can be dismissed or persistent\ndepending on the type of action or state.\n\n### Basic usage\n\nA basic contextual notification takes text as content, a status icon to the left\nof the text, and an action icon on the right side of the notification.\n\n    <px-context-notification\n      type=\"healthy\"\n      status-icon=\"px-utl:confirmed\"\n      content=\"Your dashboard has been successfully created.\"\n      action-icon=\"px-nav:close\"\n      opened>\n    </px-context-notification>\n\nIt is possible to configure a contextual notification without either a status\nicon or an action icon/button:\n\n    <px-context-notification\n      small\n      type=\"info\"\n      content=\"26 Filters 2,479,322 Devices\"\n      opened>\n    </px-context-notification>\n\n### Custom content\n\nYou can use slots to insert custom content in the contextual notification.\nNote that it is not recommended to put anything but text or chips in the \"content\"\nslot, or to put anything but icons or buttons in the \"right\" slot. Anything in\nthe \"right\" slot should be actionable. There should only every be one top level\nelement in the \"right\" slot.\n\n    <px-context-notification\n      type=\"info\"\n      opened>\n      <div slot=\"content\" class=\"chips\">\n        <px-chip content=\"Name\" class=\"chip--light\" show-icon not-selectable></px-chip>\n        <px-chip content=\"Location\" class=\"chip--light\" show-icon not-selectable></px-chip>\n        <px-chip content=\"Date\" class=\"chip--light\" show-icon not-selectable></px-chip>\n      </div>\n      <button slot=\"right\" class=\"btn--light\">Clear All</button>\n    </px-context-notification>\n\n### Styling\nThe following custom properties are available for styling:\n\nCustom property | Description\n:----------------|:-------------\n`--px-context-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.",
       "summary": "",
-      "path": "px-contextual-notification.html",
+      "path": "px-context-notification.html",
       "properties": [
         {
           "name": "statusIcon",
@@ -13,18 +13,18 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 97,
               "column": 8
             },
             "end": {
-              "line": 99,
+              "line": 100,
               "column": 9
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "null"
+          "defaultValue": "\"\""
         },
         {
           "name": "content",
@@ -33,17 +33,18 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 104,
               "column": 8
             },
             "end": {
-              "line": 105,
+              "line": 107,
               "column": 9
             }
           },
           "metadata": {
             "polymer": {}
-          }
+          },
+          "defaultValue": "\"\""
         },
         {
           "name": "actionIcon",
@@ -52,18 +53,18 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 112,
               "column": 8
             },
             "end": {
-              "line": 113,
+              "line": 115,
               "column": 9
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "null"
+          "defaultValue": "\"\""
         },
         {
           "name": "type",
@@ -72,11 +73,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 120,
               "column": 8
             },
             "end": {
-              "line": 122,
+              "line": 124,
               "column": 9
             }
           },
@@ -92,11 +93,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 130,
               "column": 8
             },
             "end": {
-              "line": 132,
+              "line": 134,
               "column": 9
             }
           },
@@ -112,11 +113,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 139,
               "column": 8
             },
             "end": {
-              "line": 141,
+              "line": 143,
               "column": 9
             }
           },
@@ -133,11 +134,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 146,
               "column": 6
             },
             "end": {
-              "line": 146,
+              "line": 148,
               "column": 7
             }
           },
@@ -154,20 +155,16 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 150,
               "column": 6
             },
             "end": {
-              "line": 153,
+              "line": 152,
               "column": 7
             }
           },
           "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -180,11 +177,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 90,
+          "line": 91,
           "column": 12
         },
         "end": {
-          "line": 154,
+          "line": 153,
           "column": 5
         }
       },
@@ -196,11 +193,11 @@
           "description": "The icon to display on the left side of the contextual notification",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 97,
               "column": 8
             },
             "end": {
-              "line": 99,
+              "line": 100,
               "column": 9
             }
           },
@@ -212,11 +209,11 @@
           "description": "The content to display in the contextual notification",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 104,
               "column": 8
             },
             "end": {
-              "line": 105,
+              "line": 107,
               "column": 9
             }
           },
@@ -228,11 +225,11 @@
           "description": "The icon or button to display on the right side of the contextual\nnotification",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 112,
               "column": 8
             },
             "end": {
-              "line": 113,
+              "line": 115,
               "column": 9
             }
           },
@@ -244,11 +241,11 @@
           "description": "The type of contextual notification defines the visual styling. Should\nbe one of important, warning, error, info/information, healthy, or unknown.",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 120,
               "column": 8
             },
             "end": {
-              "line": 122,
+              "line": 124,
               "column": 9
             }
           },
@@ -260,11 +257,11 @@
           "description": "If true, the height of the notification will be reduced to 40px on\nmobile and 20px otherwise. Set this attribute when configuring a\nnotification with text only (no icons or buttons).",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 130,
               "column": 8
             },
             "end": {
-              "line": 132,
+              "line": 134,
               "column": 9
             }
           },
@@ -276,11 +273,11 @@
           "description": "If true, the contextual notification is visible. Set to false to hide\nthe notification.",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 139,
               "column": 8
             },
             "end": {
-              "line": 141,
+              "line": 143,
               "column": 9
             }
           },
@@ -298,14 +295,14 @@
           "description": "",
           "name": "content",
           "range": {
-            "file": "px-contextual-notification.html",
+            "file": "px-context-notification.html",
             "start": {
-              "line": 71,
-              "column": 8
+              "line": 72,
+              "column": 6
             },
             "end": {
-              "line": 73,
-              "column": 15
+              "line": 74,
+              "column": 13
             }
           }
         },
@@ -313,19 +310,19 @@
           "description": "",
           "name": "right",
           "range": {
-            "file": "px-contextual-notification.html",
+            "file": "px-context-notification.html",
             "start": {
-              "line": 76,
-              "column": 8
+              "line": 77,
+              "column": 6
             },
             "end": {
-              "line": 82,
-              "column": 15
+              "line": 83,
+              "column": 13
             }
           }
         }
       ],
-      "tagname": "px-contextual-notification"
+      "tagname": "px-context-notification"
     }
   ]
 }

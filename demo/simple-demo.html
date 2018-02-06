@@ -9,14 +9,14 @@
   <link rel="import" href="../../polymer/polymer.html"/>
   <link rel="import" href="../../polymer/lib/elements/dom-bind.html">
   <link rel="import" href="../../px-theme/px-theme-styles.html">
-  <link rel="import" href="../px-contextual-notification.html"/>
+  <link rel="import" href="../px-context-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
   <custom-style>
     <style is="custom-style">
       .auto-size-notification {
-        --px-contextual-notification-height: auto;
+        --px-context-notification-height: auto;
       }
       .btn--light {
         border: 1px solid white;
@@ -61,7 +61,7 @@
   <dom-bind>
     <template is="dom-bind">
       <h2>There should only ever be one contextual notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
-      <px-contextual-notification
+      <px-context-notification
         type=[[type]]
         status-icon=[[status]]
         content=[[contentString]]
@@ -81,7 +81,7 @@
             <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
           </div>
         </template>
-      </px-contextual-notification>
+      </px-context-notification>
       <br>
       <div>
         <button class="btn u-mt" on-click="_static">
@@ -191,8 +191,8 @@
       }
     }
 
-    const contextualNotification = document.querySelector('px-contextual-notification');
-    contextualNotification.addEventListener('px-contextual-notification-action-tapped', _handleActionIconButtonTapped);
+    const contextualNotification = document.querySelector('px-context-notification');
+    contextualNotification.addEventListener('px-context-notification-action-tapped', _handleActionIconButtonTapped);
   });
 
 </script>

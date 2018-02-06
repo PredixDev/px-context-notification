@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="css/px-contextual-notification-styles.html" />
+<link rel="import" href="css/px-context-notification-styles.html" />
 
 <!--
 A Contextual Notification provides a way to notify the user of a state change or
@@ -13,23 +13,23 @@ depending on the type of action or state.
 A basic contextual notification takes text as content, a status icon to the left
 of the text, and an action icon on the right side of the notification.
 
-    <px-contextual-notification
+    <px-context-notification
       type="healthy"
       status-icon="px-utl:confirmed"
       content="Your dashboard has been successfully created."
       action-icon="px-nav:close"
       opened>
-    </px-contextual-notification>
+    </px-context-notification>
 
 It is possible to configure a contextual notification without either a status
 icon or an action icon/button:
 
-    <px-contextual-notification
+    <px-context-notification
       small
       type="info"
       content="26 Filters 2,479,322 Devices"
       opened>
-    </px-contextual-notification>
+    </px-context-notification>
 
 ### Custom content
 
@@ -39,7 +39,7 @@ slot, or to put anything but icons or buttons in the "right" slot. Anything in
 the "right" slot should be actionable. There should only every be one top level
 element in the "right" slot.
 
-    <px-contextual-notification
+    <px-context-notification
       type="info"
       opened>
       <div slot="content" class="chips">
@@ -48,24 +48,24 @@ element in the "right" slot.
         <px-chip content="Date" class="chip--light" show-icon not-selectable></px-chip>
       </div>
       <button slot="right" class="btn--light">Clear All</button>
-    </px-contextual-notification>
+    </px-context-notification>
 
 ### Styling
 The following custom properties are available for styling:
 
 Custom property | Description
 :----------------|:-------------
-`--px-contextual-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.
+`--px-context-notification-height` | Height of the contextual notification. Defaults to 80px on a mobile device, and 40px otherwise.
 
-@element px-contextual-notification
+@element px-context-notification
 @blurb A component providing a way to notify the user of a state change or actions taken on a specific context.
 @homepage index.html
 @demo index.html
 -->
 
-<dom-module id="px-contextual-notification">
+<dom-module id="px-context-notification">
   <template>
-    <style include="px-contextual-notification-styles"></style>
+    <style include="px-context-notification-styles"></style>
     <div class$="contextual-notification-left [[_hideIfEmpty(statusIcon)]]">
       <px-icon class="contextual-notification-icon" icon="[[statusIcon]]"></px-icon>
     </div>
@@ -90,7 +90,7 @@ Custom property | Description
     'use strict';
 
     Polymer({
-      is: 'px-contextual-notification',
+      is: 'px-context-notification',
       properties: {
         /**
          * The icon to display on the left side of the contextual notification
@@ -149,7 +149,7 @@ Custom property | Description
       },
 
       _handleTap() {
-        this.fire('px-contextual-notification-action-tapped');
+        this.fire('px-context-notification-action-tapped');
       }
     });
   })();

@@ -1,4 +1,4 @@
-describe('px-contextual-notification default look & behavior', function () {
+describe('px-context-notification default look & behavior', function () {
   let contextualNotifEl;
   beforeEach((done)=>{
     contextualNotifEl = fixture('PxContextualNotificationFixture');
@@ -16,7 +16,7 @@ describe('px-contextual-notification default look & behavior', function () {
     let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
     expect(contextualNotifRect.height > 0).to.be.true;
     contextualNotifEl.opened = false;
-    expect(document.querySelector('px-contextual-notification')).to.exist;
+    expect(document.querySelector('px-context-notification')).to.exist;
     setTimeout(() => {
       contextualNotifRect = contextualNotifEl.getBoundingClientRect();
       expect(contextualNotifRect.height === 0).to.be.true;
@@ -24,9 +24,9 @@ describe('px-contextual-notification default look & behavior', function () {
     }, 600);
   });
 
-  it('fires the `px-contextual-notification-action-tapped` event when the contextual notification action icon is tapped', (done) => {
+  it('fires the `px-context-notification-action-tapped` event when the contextual notification action icon is tapped', (done) => {
     var eventSpy = sinon.spy();
-    contextualNotifEl.addEventListener('px-contextual-notification-action-tapped', eventSpy);
+    contextualNotifEl.addEventListener('px-context-notification-action-tapped', eventSpy);
 
     setTimeout(() => {
       const actionDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-right');
@@ -39,7 +39,7 @@ describe('px-contextual-notification default look & behavior', function () {
 
 });
 
-describe('px-contextual-notification custom size', function () {
+describe('px-context-notification custom size', function () {
   let contextualNotifEl;
   beforeEach((done)=>{
     contextualNotifEl = fixture('PxContextualNotificationCustomSizeFixture');
@@ -49,7 +49,7 @@ describe('px-contextual-notification custom size', function () {
     });
   });
 
-  it('gets its height from the --px-contextual-notification-height style variable', function () {
+  it('gets its height from the --px-context-notification-height style variable', function () {
     let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
     expect(contextualNotifRect.height).to.be.closeTo(300, 5);
   });

@@ -1,8 +1,8 @@
-# px-contextual-notification [![Build Status](https://travis-ci.org/PredixDev/px-contextual-notification.svg?branch=master)](https://travis-ci.org/PredixDev/px-contextual-notification)
+# px-context-notification [![Build Status](https://travis-ci.org/PredixDev/px-context-notification.svg?branch=master)](https://travis-ci.org/PredixDev/px-context-notification)
 
 ## Overview
 
-px-contextual-notification is a Predix UI component which provides a way to notify the user of a state change or actions taken on a specific context.
+px-context-notification is a Predix UI component which provides a way to notify the user of a state change or actions taken on a specific context.
 
 ## Usage
 
@@ -19,25 +19,25 @@ Node, npm and bower are necessary to install the component and dependencies. web
 First, install the component via bower on the command line.
 
 ```
-bower install px-contextual-notification --save
+bower install px-context-notification --save
 ```
 
 Second, import the component to your application with the following tag in your head.
 
 ```
-<link rel="import" href="/bower_components/px-contextual-notification/px-contextual-notification.html"/>
+<link rel="import" href="/bower_components/px-context-notification/px-context-notification.html"/>
 ```
 
 Finally, use the component in your application:
 
 ```
-<px-contextual-notification
+<px-context-notification
   type="healthy"
   status-icon="px-utl:confirmed"
   content="Your dashboard has been successfully created."
   action-icon="px-nav:close"
   opened>
-</px-contextual-notification>
+</px-context-notification>
 ```
 
 <br />
@@ -45,7 +45,7 @@ Finally, use the component in your application:
 
 ## Documentation
 
-Read the full API and view the demo [here](https://predixdev.github.io/px-contextual-notification).
+Read the full API and view the demo [here](https://predixdev.github.io/px-context-notification).
 
 The documentation in this repository is supplemental to the official Predix documentation, which is continuously updated and maintained by the Predix documentation team. Go to [http://predix.io](http://predix.io)  to see the official Predix documentation.
 
@@ -76,4 +76,4 @@ Navigate to the root of that server (e.g. http://localhost:8080/) in a browser t
 
 ## Known Issues
 
-Please use [Github Issues](https://github.com/PredixDev/px-contextual-notification/issues) to submit any bugs you might find.
+Please use [Github Issues](https://github.com/PredixDev/px-context-notification/issues) to submit any bugs you might find.
