@@ -18,7 +18,25 @@
 <!-- Demo DOM module -->
 <dom-module id="px-contextual-notification-demo">
   <template>
-  <style include="px-demo-styles"></style>
+    <custom-style>
+      <style is="custom-style" include="px-demo-styles">
+        .btn--light {
+          border: 1px solid white;
+          box-shadow: none;
+          background-color: transparent;
+          color: white;
+          outline: none;
+          cursor: pointer;
+          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+        }
+        .btn--light:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+        .btn--light:active {
+          background-color: rgba(255,255,255,0.4);
+        }
+      </style>
+    </custom-style>
 
     <!-- Header -->
   <px-demo-header
@@ -46,7 +64,7 @@
         small="{{props.small.value}}"
         on-px-contextual-notification-action-tapped="_handleActionIconButtonTapped">
         <template is="dom-if" if="{{_showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
-          <button slot="right" class="btn--white">Undo</button>
+          <button slot="right" class="btn--light">Undo</button>
         </template>
       </px-contextual-notification>
 

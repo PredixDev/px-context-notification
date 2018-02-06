@@ -62,7 +62,9 @@ $inuit-enable-btn--icon : true;
   display: flex;
   align-items: center;
   min-width: 0;
-  margin: 10px 0;
+  margin-top: calculateRem(10px);
+  margin-bottom: calculateRem(10px);
+  margin-right: calculateRem(15px);
 }
 
 .contextual-notification-left {
@@ -89,11 +91,6 @@ $inuit-enable-btn--icon : true;
 
 :host([type="error"]) .contextual-notification-icon {
   color: var(--px-alert-label-text-color--error, black);
-}
-
-div.contextual-notification-right button,
-div.contextual-notification-right ::slotted(*) {
-  margin-left: calculateRem(30px);
 }
 
 :host([type="important"]) {
