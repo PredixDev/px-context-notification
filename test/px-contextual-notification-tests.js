@@ -15,7 +15,6 @@ describe('px-contextual-notification default look & behavior', function () {
   it('is hidden but not removed from the dom when the `opened` property is set to false', (done) => {
     let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
     expect(contextualNotifRect.height > 0).to.be.true;
-    // expect(contextualNotifRect.height).to.be.closeTo(80, 5);
     contextualNotifEl.opened = false;
     expect(document.querySelector('px-contextual-notification')).to.exist;
     setTimeout(() => {
@@ -32,33 +31,10 @@ describe('px-contextual-notification default look & behavior', function () {
     setTimeout(() => {
       const actionDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-right');
       const actionIcon = actionDiv.querySelector('px-icon');
-      // Must use the MockInteractions tap event here to ensure test triggers listeners
-      // in Polymer 2.x with shadow DOM
-      // MockInteractions.tap(actionIcon);
       actionIcon.click();
       expect(eventSpy).to.have.been.calledOnce;
       done();
     }, 600);
-  });
-
-});
-
-describe('px-contextual-notification with no icons', function () {
-  let contextualNotifEl;
-  beforeEach((done)=>{
-    contextualNotifEl = fixture('PxContextualNotificationWithoutIconsFixture');
-    contextualNotifEl.opened = true;
-    flush(()=>{
-      done();
-    });
-  });
-
-  it('does not allot space for icons if none are provided', function () {
-    let contextualNotifRect = contextualNotifEl.getBoundingClientRect();
-    let contentDiv = Polymer.dom(contextualNotifEl.root).querySelector('.contextual-notification-content');
-    let contentDivRect = contentDiv.getBoundingClientRect();
-    expect(contentDivRect.left - contextualNotifRect.left).to.be.closeTo(15, 5);
-    expect(contextualNotifRect.right - contentDivRect.right).to.be.closeTo(15, 5);
   });
 
 });
