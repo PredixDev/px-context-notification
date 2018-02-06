@@ -36,17 +36,18 @@ icon or an action icon/button:
 You can use slots to insert custom content in the contextual notification.
 Note that it is not recommended to put anything but text or chips in the "content"
 slot, or to put anything but icons or buttons in the "right" slot. Anything in
-the "right" slot should be actionable.
+the "right" slot should be actionable. There should only every be one top level
+element in the "right" slot.
 
     <px-contextual-notification
       type="info"
       opened>
       <div slot="content" class="chips">
-        <px-chip content="Name" show-icon not-selectable></px-chip>
-        <px-chip content="Location" show-icon not-selectable></px-chip>
-        <px-chip content="Date" show-icon not-selectable></px-chip>
+        <px-chip content="Name" class="chip--light" show-icon not-selectable></px-chip>
+        <px-chip content="Location" class="chip--light" show-icon not-selectable></px-chip>
+        <px-chip content="Date" class="chip--light" show-icon not-selectable></px-chip>
       </div>
-      <button slot="right">Clear All</button>
+      <button slot="right" class="btn--light">Clear All</button>
     </px-contextual-notification>
 
 ### Styling

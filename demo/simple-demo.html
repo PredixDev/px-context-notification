@@ -17,32 +17,40 @@
 
   <custom-style>
     <style is="custom-style">
+      .auto-size-notification {
+        --px-contextual-notification-height: auto;
+      }
+      .btn--light {
+        border: 1px solid white;
+        box-shadow: none;
+        background-color: transparent;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+      }
+      .btn--light:hover {
+        background-color: rgba(255,255,255,0.2);
+      }
+      .btn--light:active {
+        background-color: rgba(255,255,255,0.4);
+      }
       .chips {
         display: flex;
+        flex-wrap: wrap;
       }
       px-chip {
         padding-right: 10px;
         padding-top: 2px;
         padding-bottom: 2px;
       }
-      .auto-size-notification {
-        --px-contextual-notification-height: auto;
-      }
-      .whiteChip {
+      .chip--light {
         --px-chip-border-color: white;
         --px-chip-border-color--hover: white;
         --px-chip-text-color: white;
         --px-chip-icon-color: white;
         --px-chip-icon-color--hover: white;
         --px-chip-background-color--hover: rgba(255,255,255,0.2);
-      }
-      .blackChip {
-        --px-chip-border-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-border-color--hover: var(--px-alert-label-text-color--error, black);
-        --px-chip-text-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-icon-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-icon-color--hover: var(--px-alert-label-text-color--error, black);
-        --px-chip-background-color--hover: rgba(0,0,0,0.2);
       }
     </style>
   </custom-style>
@@ -64,16 +72,16 @@
       opened=[[opened]]
       small=[[small]]>
       <template is="dom-if" if="[[showUndoButton]]" restamp>
-        <button slot="right">Undo</button>
+        <button slot="right" class="btn--light">Undo</button>
       </template>
       <template is="dom-if" if="[[showClearAllButton]]" restamp>
-        <button slot="right">Clear All</button>
+        <button slot="right" class="btn--light">Clear All</button>
       </template>
       <template is="dom-if" if="[[showChips]]" restamp>
         <div slot="content" class="chips">
-          <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-          <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-          <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
+          <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+          <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+          <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
         </div>
       </template>
     </px-contextual-notification>

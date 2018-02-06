@@ -12,41 +12,66 @@
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
-  <style>
-    .chips {
-      display: flex;
-    }
-    px-chip {
-      padding-right: 10px;
-      padding-top: 2px;
-      padding-bottom: 2px;
-    }
-  </style>
   <custom-style>
     <style is="custom-style">
-      .auto-size-notification {
-        --px-contextual-notification-height: auto;
-      }
-    </style>
-  </custom-style>
-  <custom-style>
-    <style is="custom-style">
-      .whiteChip {
-        --px-chip-border-color: white;
-        --px-chip-border-color--hover: white;
-        --px-chip-text-color: white;
-        --px-chip-icon-color: white;
-        --px-chip-icon-color--hover: white;
-        --px-chip-background-color--hover: rgba(255,255,255,0.2);
-      }
-      .blackChip {
-        --px-chip-border-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-border-color--hover: var(--px-alert-label-text-color--error, black);
-        --px-chip-text-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-icon-color: var(--px-alert-label-text-color--error, black);
-        --px-chip-icon-color--hover: var(--px-alert-label-text-color--error, black);
-        --px-chip-background-color--hover: rgba(0,0,0,0.2);
-      }
+        .auto-size-notification {
+          --px-contextual-notification-height: auto;
+        }
+        .btn--light {
+          border: 1px solid white;
+          box-shadow: none;
+          background-color: transparent;
+          color: white;
+          outline: none;
+          cursor: pointer;
+          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+        }
+        .btn--light:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+        .btn--light:active {
+          background-color: rgba(255,255,255,0.4);
+        }
+        .btn--dark {
+          border: 1px solid var(--px-alert-label-text-color--error, black);
+          box-shadow: none;
+          background-color: transparent;
+          color: var(--px-alert-label-text-color--error, black);
+          outline: none;
+          cursor: pointer;
+          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+        }
+        .btn--dark:hover{
+          background-color: rgba(0,0,0,0.2);
+        }
+        .btn--dark:active{
+          background-color: rgba(0,0,0,0.4);
+        }
+        .chips {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        px-chip {
+          padding-right: 10px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+        .chip--light {
+          --px-chip-border-color: white;
+          --px-chip-border-color--hover: white;
+          --px-chip-text-color: white;
+          --px-chip-icon-color: white;
+          --px-chip-icon-color--hover: white;
+          --px-chip-background-color--hover: rgba(255,255,255,0.2);
+        }
+        .chip--dark {
+          --px-chip-border-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-border-color--hover: var(--px-alert-label-text-color--error, black);
+          --px-chip-text-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-icon-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-icon-color--hover: var(--px-alert-label-text-color--error, black);
+          --px-chip-background-color--hover: rgba(0,0,0,0.2);
+        }
     </style>
   </custom-style>
 
@@ -79,7 +104,7 @@
     status-icon="px-utl:delete"
     content="Widget has been removed from your dashboard."
     opened>
-    <button slot="right">Undo</button>
+    <button slot="right" class="btn--light">Undo</button>
   </px-contextual-notification>
 
   <h2>An informational contextual notification with actions</h2>
@@ -87,11 +112,11 @@
     type="error"
     opened>
     <div slot="content" class="chips">
-      <px-chip class="blackChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="blackChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="blackChip" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--dark" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--dark" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--dark" content="Date" show-icon not-selectable></px-chip>
     </div>
-    <button slot="right">Clear All</button>
+    <button slot="right" class="btn--dark">Clear All</button>
   </px-contextual-notification>
 
   <h2>A small contextual notification with no icons</h2>
@@ -114,34 +139,33 @@
     class="auto-size-notification"
     type="info"
     opened>
-
     <div slot="content" class="chips">
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Name" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Location" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Date" show-icon not-selectable></px-chip>
-      <px-chip class="whiteChip" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
     </div>
-    <button slot="right">Clear All</button>
+    <button slot="right" class="btn--light">Clear All</button>
   </px-contextual-notification>
 
 </body>
