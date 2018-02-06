@@ -37,9 +37,16 @@
 
     <!-- Component ---------------------------------------------------------->
     <px-demo-component slot="px-demo-component" style="width: 100%;">
-      <px-contextual-notification type="{{props.type.value}}" status-icon="{{props.statusIcon.value}}" content="{{props.content.value}}" action-icon="{{props.actionIcon.value}}" opened="{{props.opened.value}}">
-        <template is="dom-if" if="{{showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
-          <button slot="right" class="whiteButton">Undo</button>
+      <px-contextual-notification
+        type="{{props.type.value}}"
+        status-icon="{{props.statusIcon.value}}"
+        content="{{props.content.value}}"
+        action-icon="{{props.actionIcon.value}}"
+        opened="{{props.opened.value}}"
+        small="{{props.small.value}}"
+        on-px-contextual-notification-action-tapped="_handleActionIconButtonTapped">
+        <template is="dom-if" if="{{_showCustomContent(chosenConfig.configName, 'Confirmation')}}" restamp="true">
+          <button slot="right" class="btn--white">Undo</button>
         </template>
       </px-contextual-notification>
 
@@ -87,6 +94,7 @@ Polymer({
             content: 'Widget has been removed from your dashboard.',
             statusIcon: 'px-utl:delete',
             actionIcon: '',
+            opened: true,
             lightDomContent: '<button slot="right" class="whiteButton">Undo</button>'
           }
         ]
@@ -106,19 +114,27 @@ Polymer({
     },
     statusIcon: {
       type: String,
-      defaultValue: 'px-utl:filter'
+      defaultValue: 'px-utl:filter',
+      inputType: 'text'
     },
     content: {
       type: String,
-      defaultValue: '26 Filters'
+      defaultValue: '26 Filters',
+      inputType: 'text'
     },
     actionIcon: {
       type: String,
-      defaultValue: 'px-nav:close'
+      defaultValue: 'px-nav:close',
+      inputType: 'text'
     },
     opened: {
       type: Boolean,
       defaultValue: true,
+      inputType: 'toggle'
+    },
+    small: {
+      type: Boolean,
+      defaultValue: false,
       inputType: 'toggle'
     },
     lightDomContent: {
@@ -126,8 +142,14 @@ Polymer({
       defaultValue: ''
     }
   },
-  showCustomContent: function(selectedTab, contentToShow) {
+  _showCustomContent: function(selectedTab, contentToShow) {
     return selectedTab === contentToShow;
+  },
+  _handleActionIconButtonTapped: function() {
+    if (this.props.actionIcon.value === 'px-nav:close') {
+      this.set('props.opened.value', false);
+    }
   }
+
 });
 </script>
