@@ -1,8 +1,8 @@
 {
-  "name": "px-context-notification",
+  "name": "px-notification",
   "version": "1.0.0",
   "main": [
-    "px-context-notification.html"
+    "px-notification.html"
   ],
   "ignore": [
     ".*",
@@ -15,7 +15,7 @@
     "OSS_Notice.pdf",
     "scripts",
     ".github",
-    "px-context-notification.png",
+    "px-notification.png",
     "LICENSE.md",
     "CONTRIBUTING.md",
     "HISTORY.md",

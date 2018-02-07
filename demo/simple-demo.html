@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Context Notification -- Simple Demo</title>
+  <title>Notification -- Simple Demo</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../../polymer/polymer.html"/>
   <link rel="import" href="../../polymer/lib/elements/dom-bind.html">
   <link rel="import" href="../../px-theme/px-theme-styles.html">
-  <link rel="import" href="../px-context-notification.html"/>
+  <link rel="import" href="../px-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
   <custom-style>
     <style is="custom-style">
       .auto-size-notification {
-        --px-context-notification-height: auto;
+        --px-notification-height: auto;
       }
       .btn--light {
         border: 1px solid white;
@@ -60,8 +60,8 @@
   </custom-style>
   <dom-bind>
     <template is="dom-bind">
-      <h2>There should only ever be one context notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
-      <px-context-notification
+      <h2>There should only ever be one notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
+      <px-notification
         type=[[type]]
         status-icon=[[status]]
         content=[[contentString]]
@@ -81,7 +81,7 @@
             <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
           </div>
         </template>
-      </px-context-notification>
+      </px-notification>
       <br>
       <div>
         <button class="btn u-mt" on-click="_static">
@@ -124,8 +124,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextNotification.classList.remove('auto-size-notification');
-      contextNotification.updateStyles();
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
     }
 
     app._dismissible = function() {
@@ -137,8 +137,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextNotification.classList.remove('auto-size-notification');
-      contextNotification.updateStyles();
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
     }
 
     app._withActions = function() {
@@ -150,8 +150,8 @@
       app.showUndoButton = true;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextNotification.classList.remove('auto-size-notification');
-      contextNotification.updateStyles();
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
     }
 
     app._withChips = function() {
@@ -163,8 +163,8 @@
       app.showUndoButton = false;
       app.showChips = true;
       app.showClearAllButton = true;
-      contextNotification.classList.remove('auto-size-notification');
-      contextNotification.updateStyles();
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
     }
 
     app._autosized = function() {
@@ -176,8 +176,8 @@
       app.showUndoButton = false;
       app.showChips = false;
       app.showClearAllButton = false;
-      contextNotification.classList.add('auto-size-notification');
-      contextNotification.updateStyles();
+      notification.classList.add('auto-size-notification');
+      notification.updateStyles();
     }
 
     function _handleActionIconButtonTapped() {
@@ -191,8 +191,8 @@
       }
     }
 
-    const contextNotification = document.querySelector('px-context-notification');
-    contextNotification.addEventListener('px-context-notification-action-tapped', _handleActionIconButtonTapped);
+    const notification = document.querySelector('px-notification');
+    notification.addEventListener('px-notification-action-tapped', _handleActionIconButtonTapped);
   });
 
 </script>

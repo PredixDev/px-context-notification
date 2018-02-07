@@ -1,45 +1,45 @@
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="css/px-context-notification-styles.html" />
+<link rel="import" href="css/px-notification-styles.html" />
 
 <!--
-A context notification provides a way to notify the user of a state change or
+A notification provides a way to notify the user of a state change or
 actions taken on a specific context. The context can be a component, page, etc.
-context notifications communicate where the notification applies to and catch
-the user's attention. A context notification can be dismissed or persistent
+Notifications communicate where the notification applies to and catch
+the user's attention. A notification can be dismissed or persistent
 depending on the type of action or state.
 
 ### Basic usage
 
-A basic context notification takes text as content, a status icon to the left
+A basic notification takes text as content, a status icon to the left
 of the text, and an action icon on the right side of the notification.
 
-    <px-context-notification
+    <px-notification
       type="healthy"
       status-icon="px-utl:confirmed"
       content="Your dashboard has been successfully created."
       action-icon="px-nav:close"
       opened>
-    </px-context-notification>
+    </px-notification>
 
-It is possible to configure a context notification without either a status
+It is possible to configure a notification without either a status
 icon or an action icon/button:
 
-    <px-context-notification
+    <px-notification
       small
       type="info"
       content="26 Filters 2,479,322 Devices"
       opened>
-    </px-context-notification>
+    </px-notification>
 
 ### Custom content
 
-You can use slots to insert custom content in the context notification.
+You can use slots to insert custom content in the notification.
 Note that it is not recommended to put anything but text or chips in the "content"
 slot, or to put anything but icons or buttons in the "right" slot. Anything in
 the "right" slot should be actionable. There should only every be one top level
 element in the "right" slot.
 
-    <px-context-notification
+    <px-notification
       type="info"
       opened>
       <div slot="content" class="chips">
@@ -48,37 +48,37 @@ element in the "right" slot.
         <px-chip content="Date" class="chip--light" show-icon not-selectable></px-chip>
       </div>
       <button slot="right" class="btn--light">Clear All</button>
-    </px-context-notification>
+    </px-notification>
 
 ### Styling
 The following custom properties are available for styling:
 
 Custom property | Description
 :----------------|:-------------
-`--px-context-notification-height` | Height of the context notification. Defaults to 80px on a mobile device, and 40px otherwise.
+`--px-notification-height` | Height of the notification. Defaults to 80px on a mobile device, and 40px otherwise.
 
-@element px-context-notification
+@element px-notification
 @blurb A component providing a way to notify the user of a state change or actions taken on a specific context.
 @homepage index.html
 @demo index.html
 -->
 
-<dom-module id="px-context-notification">
+<dom-module id="px-notification">
   <template>
-    <style include="px-context-notification-styles"></style>
-    <div class$="context-notification-left [[_hideIfEmpty(statusIcon)]]">
-      <px-icon class="context-notification-icon" icon="[[statusIcon]]"></px-icon>
+    <style include="px-notification-styles"></style>
+    <div class$="notification-left [[_hideIfEmpty(statusIcon)]]">
+      <px-icon class="notification-icon" icon="[[statusIcon]]"></px-icon>
     </div>
-    <div class="context-notification-content">
+    <div class="notification-content">
       <slot name="content">
         <div>[[content]]</div>
       </slot>
     </div>
-    <div class="context-notification-right" on-tap="_handleTap">
+    <div class="notification-right" on-tap="_handleTap">
       <slot name="right">
         <div class$="[[_hideIfEmpty(actionIcon)]]">
           <button class="btn btn--bare btn--icon">
-            <px-icon class="context-notification-icon" icon=[[actionIcon]]></px-icon>
+            <px-icon class="notification-icon" icon=[[actionIcon]]></px-icon>
           </button>
       </div>
       </slot>
@@ -90,17 +90,17 @@ Custom property | Description
     'use strict';
 
     Polymer({
-      is: 'px-context-notification',
+      is: 'px-notification',
       properties: {
         /**
-         * The icon to display on the left side of the context notification
+         * The icon to display on the left side of the notification
          */
         statusIcon: {
           type: String,
           value: ''
         },
         /**
-         * The content to display in the context notification
+         * The content to display in the notification
          */
         content: {
           type: String,
@@ -115,7 +115,7 @@ Custom property | Description
           value: ''
         },
         /**
-         * The type of context notification defines the visual styling. Should
+         * The type of notification defines the visual styling. Should
          * be one of important, warning, error, info/information, healthy, or unknown.
          */
         type: {
@@ -134,7 +134,7 @@ Custom property | Description
           reflectToAttribute: true
         },
         /**
-         * If true, the context notification is visible. Set to false to hide
+         * If true, the notification is visible. Set to false to hide
          * the notification.
          */
         opened: {
@@ -149,7 +149,7 @@ Custom property | Description
       },
 
       _handleTap() {
-        this.fire('px-context-notification-action-tapped');
+        this.fire('px-notification-action-tapped');
       }
     });
   })();

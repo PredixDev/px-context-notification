@@ -9,7 +9,7 @@
  */
 
 //
-// Sass for the for the px-context-notification component
+// Sass for the for the px-notification component
 //
 
 // Generic
@@ -43,21 +43,21 @@ $inuit-enable-btn--icon : true;
 
 :host([opened]) {
   font-size: calculateRem(15px);
-  height: var(--px-context-notification-height, calculateRem(80px));
+  height: var(--px-notification-height, calculateRem(80px));
   @include media-query(lap-and-up) {
-    height: var(--px-context-notification-height, calculateRem(40px));
+    height: var(--px-notification-height, calculateRem(40px));
   }
 }
 
 :host([opened][small]) {
   font-size: calculateRem(12px);
-  height: var(--px-context-notification-height, calculateRem(40px));
+  height: var(--px-notification-height, calculateRem(40px));
   @include media-query(lap-and-up) {
-    height: var(--px-context-notification-height, calculateRem(20px));
+    height: var(--px-notification-height, calculateRem(20px));
   }
 }
 
-.context-notification-content {
+.notification-content {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -66,14 +66,14 @@ $inuit-enable-btn--icon : true;
   margin-bottom: calculateRem(10px);
 }
 
-.context-notification-left {
+.notification-left {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   margin-right: calculateRem(5px);
 }
 
-.context-notification-right {
+.notification-right {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@ $inuit-enable-btn--icon : true;
   cursor: pointer;
 }
 
-.context-notification-icon {
+.notification-icon {
   color: white;
   width: calculateRem(16px);
   height: calculateRem(16px);
@@ -89,7 +89,7 @@ $inuit-enable-btn--icon : true;
   --iron-icon-height: 100%;
 }
 
-:host([type="error"]) .context-notification-icon {
+:host([type="error"]) .notification-icon {
   color: var(--px-alert-label-text-color--error, black);
 }
 

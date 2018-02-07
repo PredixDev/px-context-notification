@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Context Notification -- Basic Configurations</title>
+  <title>Notification -- Basic Configurations</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../../polymer/polymer.html"/>
   <link rel="import" href="../../px-theme/px-theme-styles.html">
-  <link rel="import" href="../px-context-notification.html"/>
+  <link rel="import" href="../px-notification.html"/>
   <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
   <link rel="import" href="../../px-chip/px-chip.html"/>
 
   <custom-style>
     <style is="custom-style">
         .auto-size-notification {
-          --px-context-notification-height: auto;
+          --px-notification-height: auto;
         }
         .btn--light {
           border: 1px solid white;
@@ -81,33 +81,33 @@
     <style include="px-theme-styles" is="custom-style"></style>
   </custom-style>
 
-  <h2>A static context notification</h2>
-  <px-context-notification
+  <h2>A static notification</h2>
+  <px-notification
     type="info"
     status-icon="px-utl:filter"
     content="26 Filters 2,479,322 Devices"
     opened>
-  </px-context-notification>
+  </px-notification>
 
-  <h2>A confirmation context notification with actions</h2>
-  <px-context-notification
+  <h2>A confirmation notification with actions</h2>
+  <px-notification
     type="healthy"
     status-icon="px-utl:confirmed"
     content="Your dashboard has been successfully created."
     action-icon="px-nav:close"
     opened>
-  </px-context-notification>
+  </px-notification>
   <br>
-  <px-context-notification
+  <px-notification
     type="important"
     status-icon="px-utl:delete"
     content="Widget has been removed from your dashboard."
     opened>
     <button slot="right" class="btn--light">Undo</button>
-  </px-context-notification>
+  </px-notification>
 
-  <h2>An informational context notification with actions</h2>
-  <px-context-notification
+  <h2>An informational notification with actions</h2>
+  <px-notification
     type="error"
     opened>
     <div slot="content" class="chips">
@@ -116,25 +116,25 @@
       <px-chip class="chip--dark" content="Date" show-icon not-selectable></px-chip>
     </div>
     <button slot="right" class="btn--dark">Clear All</button>
-  </px-context-notification>
+  </px-notification>
 
-  <h2>A small context notification with no icons</h2>
-  <px-context-notification
+  <h2>A small notification with no icons</h2>
+  <px-notification
     small
     type="info"
     content="26 Filters"
     opened>
-  </px-context-notification>
+  </px-notification>
 
-  <h2>A context notification with overflowing content</h2>
-  <px-context-notification
+  <h2>A notification with overflowing content</h2>
+  <px-notification
     class="auto-size-notification"
     type="healthy"
     content="Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh."
     opened>
-  </px-context-notification>
+  </px-notification>
   <br>
-  <px-context-notification
+  <px-notification
     class="auto-size-notification"
     type="info"
     opened>
@@ -165,15 +165,15 @@
       <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
     </div>
     <button slot="right" class="btn--light">Clear All</button>
-  </px-context-notification>
+  </px-notification>
 
   <script>
-    const contextNotificationsNodeList = document.querySelectorAll('px-context-notification');
-    const contextNotificationsArray = Array.prototype.slice.call(contextNotificationsNodeList);
+    const notificationsNodeList = document.querySelectorAll('px-notification');
+    const notificationsArray = Array.prototype.slice.call(notificationsNodeList);
 
-    contextNotificationsArray.forEach(notif => {
-      notif.addEventListener('px-context-notification-action-tapped', () => {
-        console.log(`Event fired: 'px-context-notification-action-tapped'`);
+    notificationsArray.forEach(notif => {
+      notif.addEventListener('px-notification-action-tapped', () => {
+        console.log(`Event fired: 'px-notification-action-tapped'`);
       });
     });
   </script>
