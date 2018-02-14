@@ -18,25 +18,23 @@
 <!-- Demo DOM module -->
 <dom-module id="px-notification-demo">
   <template>
-    <custom-style>
-      <style >
-        .btn--light {
-          border: 1px solid white;
-          box-shadow: none;
-          background-color: transparent;
-          color: white;
-          outline: none;
-          cursor: pointer;
-          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
-        }
-        .btn--light:hover {
-          background-color: rgba(255,255,255,0.2);
-        }
-        .btn--light:active {
-          background-color: rgba(255,255,255,0.4);
-        }
-      </style>
-    </custom-style>
+    <style>
+      .btn--light {
+        border: 1px solid white;
+        box-shadow: none;
+        background-color: transparent;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+      }
+      .btn--light:hover {
+        background-color: rgba(255,255,255,0.2);
+      }
+      .btn--light:active {
+        background-color: rgba(255,255,255,0.4);
+      }
+    </style>
 
     <!-- Header -->
   <px-demo-header

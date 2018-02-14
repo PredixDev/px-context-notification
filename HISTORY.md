@@ -1,3 +1,7 @@
+v1.0.2
+==================
+* Remove <custom-style> tag from demo, breaks IE
+
 v1.0.1
 ==================
 * Fixing demo pages for IE11.
