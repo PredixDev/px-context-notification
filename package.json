@@ -2,7 +2,7 @@
     "name": "px-notification",
     "author": "General Electric",
     "description": "A Px component that provides a way to notify the user of a state change or actions taken on a specific context.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "private": false,
     "extName": null,
     "repository": {

@@ -1,3 +1,7 @@
+v1.0.3
+==================
+* update documentation
+
 v1.0.2
 ==================
 * Remove <custom-style> tag from demo, breaks IE

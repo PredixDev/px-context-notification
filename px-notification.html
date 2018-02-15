@@ -21,7 +21,7 @@ of the text, and an action icon on the right side of the notification.
       opened>
     </px-notification>
 
-It is possible to configure a notification without either a status
+It is possible to configure a notification without a status
 icon or an action icon/button:
 
     <px-notification
@@ -34,10 +34,10 @@ icon or an action icon/button:
 ### Custom content
 
 You can use slots to insert custom content in the notification.
-Note that it is not recommended to put anything but text or chips in the "content"
-slot, or to put anything but icons or buttons in the "right" slot. Anything in
-the "right" slot should be actionable. There should only every be one top level
-element in the "right" slot.
+Note that it is not recommended to put anything but text or chips in the `content`
+slot, or to put anything but icons or buttons in the `right` slot. Anything in
+the `right` slot should be actionable. There should only ever be one top level
+element in the `right` slot.
 
     <px-notification
       type="info"
