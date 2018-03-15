@@ -1,3 +1,7 @@
+v1.0.4
+==================
+* add event to documentation
+
 v1.0.3
 ==================
 * update documentation

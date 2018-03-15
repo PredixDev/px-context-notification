@@ -147,7 +147,11 @@ Custom property | Description
       _hideIfEmpty(icon) {
         if (typeof icon !== "string" || icon === '') return 'hidden';
       },
-
+      /**
+      * Event fired when the action icon in the right side of the notification is tapped.
+      *
+      * @event px-notification-action-tapped
+      */
       _handleTap() {
         this.fire('px-notification-action-tapped');
       }
